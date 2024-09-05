@@ -54,7 +54,37 @@
     <div id="slideshow"></div>
 
     <script>
-        // ... (keep the existing JavaScript for the slideshow)
+        const slideshow = document.getElementById('slideshow');
+        const images = [
+            'astro-images/andromeda.jpg',
+            'astro-images/heart.jpg',
+        ];
+        let currentSlide = 0;
+
+        function createSlide(image) {
+            const slide = document.createElement('div');
+            slide.classList.add('slide');
+            slide.style.backgroundImage = `url(${image})`;
+            return slide;
+        }
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % images.length;
+            showSlide(currentSlide);
+        }
+
+        images.forEach(image => {
+            slideshow.appendChild(createSlide(image));
+        });
+
+        showSlide(0);
+        setInterval(nextSlide, 5000);
     </script>
 </body>
 </html>
