@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astro Images</title>
+    <link rel="stylesheet" href="common.css">
+    <style>
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .gallery-item {
+            margin: 10px;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .gallery-item img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="astro.html">Astro Images</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="hikes.html">Hikes</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Astro Images</h1>
+        <div class="gallery">
+            <a href="astro-image1.html" class="gallery-item">
+                <img src="/api/placeholder/300/200" alt="Astro Image 1">
+            </a>
+            <a href="astro-image2.html" class="gallery-item">
+                <img src="/api/placeholder/300/200" alt="Astro Image 2">
+            </a>
+            <a href="astro-image3.html" class="gallery-item">
+                <img src="/api/placeholder/300/200" alt="Astro Image 3">
+            </a>
+            <a href="astro-image4.html" class="gallery-item">
+                <img src="/api/placeholder/300/200" alt="Astro Image 4">
+            </a>
+            <a href="astro-image5.html" class="gallery-item">
+                <img src="/api/placeholder/300/200" alt="Astro Image 5">
+            </a>
+            <a href="astro-image6.html" class="gallery-item">
+                <img src="/api/placeholder/300/200" alt="Astro Image 6">
+            </a>
+        </div>
+    </main>
+</body>
+</html>
