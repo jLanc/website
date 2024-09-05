@@ -18,7 +18,7 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background-color: black; /* Prevent white flash */
+            background-color: black;
         }
         .slide {
             position: absolute;
@@ -28,7 +28,7 @@
             height: 100%;
             opacity: 0;
             transition: opacity 1s ease-in-out;
-            will-change: opacity; /* Optimize for animations */
+            will-change: opacity;
         }
         .slide.active {
             opacity: 1;
@@ -39,7 +39,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             transition: transform 5s linear;
-            will-change: transform; /* Optimize for animations */
+            will-change: transform;
         }
     </style>
 </head>
@@ -59,10 +59,19 @@
 
     <script>
         const slideshow = document.getElementById('slideshow');
-        const images = [
-            'astro-images/andromeda.jpg',
-            'astro-images/heart.jpg',
+        const imageFolder = 'astro-images/';
+        const imageFiles = [
+            'andromeda.jpg',
+            'heart.jpg',
+            'iris.png',
+            'm1.jpg',
+            'm51.jpg',
+            'm81.png',
+            'ngc6888.png',
+            'veil.png',
+            // Add more image filenames here
         ];
+        const images = imageFiles.map(file => imageFolder + file);
         let currentSlide = 0;
         const ANIMATION_DURATION = 5000; // 5 seconds
         const MAX_MOVE_PERCENT = 10;
@@ -98,37 +107,36 @@
             return scale * (1 + MAX_MOVE_PERCENT / 100);
         }
 
-        function applyEffect(slide) {
-            const img = slide.querySelector('img');
-            const containerWidth = slideshow.clientWidth;
-            const containerHeight = slideshow.clientHeight;
+        function calculateTransform(img, containerWidth, containerHeight) {
             const minScale = calculateMinScale(img, containerWidth, containerHeight);
-            
-            const startScale = minScale * (1 + Math.random() * 0.1);
-            const endScale = minScale * (1 + Math.random() * 0.1);
+            const scale = minScale * (1 + Math.random() * 0.1);
             
             const maxMoveX = (containerWidth * MAX_MOVE_PERCENT / 200) / minScale;
             const maxMoveY = (containerHeight * MAX_MOVE_PERCENT / 200) / minScale;
             
-            const startX = Math.random() * maxMoveX * 2 - maxMoveX;
-            const startY = Math.random() * maxMoveY * 2 - maxMoveY;
-            const endX = Math.random() * maxMoveX * 2 - maxMoveX;
-            const endY = Math.random() * maxMoveY * 2 - maxMoveY;
+            const translateX = Math.random() * maxMoveX * 2 - maxMoveX;
+            const translateY = Math.random() * maxMoveY * 2 - maxMoveY;
 
-            img.style.transform = `translate(-50%, -50%) scale(${startScale}) translate(${startX}px, ${startY}px)`;
+            return `translate(-50%, -50%) scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+        }
 
-            // Force a reflow before starting the animation
-            void img.offsetWidth;
+        function applyEffect(slide, start, end) {
+            const img = slide.querySelector('img');
+            img.style.transition = 'none';
+            img.style.transform = start;
+            void img.offsetWidth; // Force reflow
 
-            img.style.transition = `transform ${ANIMATION_DURATION}ms linear`;
-            img.style.transform = `translate(-50%, -50%) scale(${endScale}) translate(${endX}px, ${endY}px)`;
+            requestAnimationFrame(() => {
+                img.style.transition = `transform ${ANIMATION_DURATION}ms linear`;
+                img.style.transform = end;
+            });
         }
 
         function showSlide(index) {
             const slides = document.querySelectorAll('.slide');
             slides.forEach(slide => slide.classList.remove('active'));
             slides[index].classList.add('active');
-            applyEffect(slides[index]);
+            applyEffect(slides[index], slides[index].dataset.startTransform, slides[index].dataset.endTransform);
         }
 
         function nextSlide() {
@@ -138,7 +146,16 @@
 
         async function initSlideshow() {
             const slides = await Promise.all(images.map(createSlide));
-            slides.forEach(slide => slideshow.appendChild(slide));
+            const containerWidth = slideshow.clientWidth;
+            const containerHeight = slideshow.clientHeight;
+
+            slides.forEach(slide => {
+                const img = slide.querySelector('img');
+                slide.dataset.startTransform = calculateTransform(img, containerWidth, containerHeight);
+                slide.dataset.endTransform = calculateTransform(img, containerWidth, containerHeight);
+                slideshow.appendChild(slide);
+            });
+            
             showSlide(0);
             setInterval(nextSlide, ANIMATION_DURATION);
         }
@@ -146,6 +163,16 @@
         initSlideshow();
 
         window.addEventListener('resize', () => {
+            const slides = document.querySelectorAll('.slide');
+            const containerWidth = slideshow.clientWidth;
+            const containerHeight = slideshow.clientHeight;
+
+            slides.forEach(slide => {
+                const img = slide.querySelector('img');
+                slide.dataset.startTransform = calculateTransform(img, containerWidth, containerHeight);
+                slide.dataset.endTransform = calculateTransform(img, containerWidth, containerHeight);
+            });
+
             showSlide(currentSlide);
         });
     </script>
