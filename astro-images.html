@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astro Images</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .gallery a {
+            margin: 10px;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .gallery img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out;
+        }
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="astro.html">Astro Images</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="hikes.html">Hikes</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Astro Images</h1>
+        <div class="gallery">
+            <a href="full-res-image.html?id=1"><img src="/api/placeholder/300/200" alt="Astro Image 1"></a>
+            <a href="full-res-image.html?id=2"><img src="/api/placeholder/300/200" alt="Astro Image 2"></a>
+            <a href="full-res-image.html?id=3"><img src="/api/placeholder/300/200" alt="Astro Image 3"></a>
+            <a href="full-res-image.html?id=4"><img src="/api/placeholder/300/200" alt="Astro Image 4"></a>
+            <a href="full-res-image.html?id=5"><img src="/api/placeholder/300/200" alt="Astro Image 5"></a>
+            <a href="full-res-image.html?id=6"><img src="/api/placeholder/300/200" alt="Astro Image 6"></a>
+        </div>
+    </main>
+</body>
+</html>
