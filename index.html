@@ -8,6 +8,7 @@
     <style>
         body, html {
             height: 100%;
+            margin: 0;
             overflow: hidden;
         }
         #slideshow {
@@ -17,6 +18,7 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
+            background-color: black; /* Prevent white flash */
         }
         .slide {
             position: absolute;
@@ -25,17 +27,19 @@
             width: 100%;
             height: 100%;
             opacity: 0;
-            transition: opacity 1s ease-in-out, transform 5s ease-in-out;
-            background-size: cover;
-            background-position: center;
+            transition: opacity 1s ease-in-out;
+            will-change: opacity; /* Optimize for animations */
         }
         .slide.active {
             opacity: 1;
-            animation: zoomEffect 5s linear infinite;
         }
-        @keyframes zoomEffect {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
+        .slide img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: transform 5s linear;
+            will-change: transform; /* Optimize for animations */
         }
     </style>
 </head>
@@ -60,18 +64,71 @@
             'astro-images/heart.jpg',
         ];
         let currentSlide = 0;
+        const ANIMATION_DURATION = 5000; // 5 seconds
+        const MAX_MOVE_PERCENT = 10;
 
-        function createSlide(image) {
+        function preloadImage(src) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.onload = () => resolve(img);
+                img.onerror = reject;
+                img.src = src;
+            });
+        }
+
+        async function createSlide(imageSrc) {
             const slide = document.createElement('div');
             slide.classList.add('slide');
-            slide.style.backgroundImage = `url(${image})`;
+            const img = await preloadImage(imageSrc);
+            slide.appendChild(img);
             return slide;
+        }
+
+        function calculateMinScale(img, containerWidth, containerHeight) {
+            const imageAspect = img.naturalWidth / img.naturalHeight;
+            const containerAspect = containerWidth / containerHeight;
+            let scale;
+
+            if (imageAspect > containerAspect) {
+                scale = containerHeight / img.naturalHeight;
+            } else {
+                scale = containerWidth / img.naturalWidth;
+            }
+
+            return scale * (1 + MAX_MOVE_PERCENT / 100);
+        }
+
+        function applyEffect(slide) {
+            const img = slide.querySelector('img');
+            const containerWidth = slideshow.clientWidth;
+            const containerHeight = slideshow.clientHeight;
+            const minScale = calculateMinScale(img, containerWidth, containerHeight);
+            
+            const startScale = minScale * (1 + Math.random() * 0.1);
+            const endScale = minScale * (1 + Math.random() * 0.1);
+            
+            const maxMoveX = (containerWidth * MAX_MOVE_PERCENT / 200) / minScale;
+            const maxMoveY = (containerHeight * MAX_MOVE_PERCENT / 200) / minScale;
+            
+            const startX = Math.random() * maxMoveX * 2 - maxMoveX;
+            const startY = Math.random() * maxMoveY * 2 - maxMoveY;
+            const endX = Math.random() * maxMoveX * 2 - maxMoveX;
+            const endY = Math.random() * maxMoveY * 2 - maxMoveY;
+
+            img.style.transform = `translate(-50%, -50%) scale(${startScale}) translate(${startX}px, ${startY}px)`;
+
+            // Force a reflow before starting the animation
+            void img.offsetWidth;
+
+            img.style.transition = `transform ${ANIMATION_DURATION}ms linear`;
+            img.style.transform = `translate(-50%, -50%) scale(${endScale}) translate(${endX}px, ${endY}px)`;
         }
 
         function showSlide(index) {
             const slides = document.querySelectorAll('.slide');
             slides.forEach(slide => slide.classList.remove('active'));
             slides[index].classList.add('active');
+            applyEffect(slides[index]);
         }
 
         function nextSlide() {
@@ -79,12 +136,18 @@
             showSlide(currentSlide);
         }
 
-        images.forEach(image => {
-            slideshow.appendChild(createSlide(image));
-        });
+        async function initSlideshow() {
+            const slides = await Promise.all(images.map(createSlide));
+            slides.forEach(slide => slideshow.appendChild(slide));
+            showSlide(0);
+            setInterval(nextSlide, ANIMATION_DURATION);
+        }
 
-        showSlide(0);
-        setInterval(nextSlide, 5000);
+        initSlideshow();
+
+        window.addEventListener('resize', () => {
+            showSlide(currentSlide);
+        });
     </script>
 </body>
 </html>
