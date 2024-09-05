@@ -50,3 +50,9 @@ main {
     margin-top: 80px; /* Adjust based on header height */
     padding: 20px;
 }
+
+body {
+    background-color: #222222;
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+}
