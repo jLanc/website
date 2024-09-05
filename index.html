@@ -3,31 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website - Home</title>
+    <title>My Website</title>
+    <link rel="stylesheet" href="common.css">
     <style>
         body, html {
-            margin: 0;
-            padding: 0;
             height: 100%;
-            font-family: Arial, sans-serif;
-        }
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 10px 0;
-            z-index: 1000;
-        }
-        nav {
-            text-align: center;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 18px;
+            overflow: hidden;
         }
         #slideshow {
             position: fixed;
@@ -35,7 +16,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            overflow: hidden;
         }
         .slide {
             position: absolute;
@@ -43,68 +24,37 @@
             left: 0;
             width: 100%;
             height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out, transform 5s ease-in-out;
             background-size: cover;
             background-position: center;
-            opacity: 0;
-            transition: opacity 2s ease-in-out, transform 10s ease-in-out;
         }
         .slide.active {
             opacity: 1;
+            animation: zoomEffect 5s linear infinite;
+        }
+        @keyframes zoomEffect {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
         }
     </style>
 </head>
 <body>
     <header>
         <nav>
-            <a href="index.html">Home</a>
-            <a href="astro.html">Astro Images</a>
-            <a href="about.html">About Me</a>
-            <a href="hikes.html">Hikes</a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="astro.html">Astro Images</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="hikes.html">Hikes</a></li>
+            </ul>
         </nav>
     </header>
 
     <div id="slideshow"></div>
 
     <script>
-        const images = [
-            '/api/placeholder/1920/1080?text=Nature+Scene+1',
-            '/api/placeholder/1920/1080?text=Cityscape+2',
-            '/api/placeholder/1920/1080?text=Mountain+View+3',
-            '/api/placeholder/1920/1080?text=Beach+Sunset+4'
-        ];
-
-        let currentSlide = 0;
-        const slideshow = document.getElementById('slideshow');
-
-        function createSlide(src) {
-            const slide = document.createElement('div');
-            slide.className = 'slide';
-            slide.style.backgroundImage = `url(${src})`;
-            return slide;
-        }
-
-        function nextSlide() {
-            const newSlide = createSlide(images[currentSlide]);
-            slideshow.appendChild(newSlide);
-
-            setTimeout(() => {
-                newSlide.classList.add('active');
-                newSlide.style.transform = 'scale(1.1)';
-            }, 100);
-
-            if (slideshow.children.length > 1) {
-                const oldSlide = slideshow.children[0];
-                oldSlide.style.opacity = '0';
-                setTimeout(() => {
-                    slideshow.removeChild(oldSlide);
-                }, 2000);
-            }
-
-            currentSlide = (currentSlide + 1) % images.length;
-        }
-
-        nextSlide();
-        setInterval(nextSlide, 8000);
+        // ... (keep the existing JavaScript for the slideshow)
     </script>
 </body>
 </html>

@@ -3,32 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Full Resolution Astro Image</title>
+    <title>Astro Image [Number]</title>
+    <link rel="stylesheet" href="common.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-        }
-        header {
-            background-color: #333;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-        }
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-        }
         main {
             max-width: 1200px;
             margin: 20px auto;
@@ -58,34 +35,10 @@
     </header>
 
     <main>
-        <h1 id="imageTitle">Full Resolution Astro Image</h1>
-        <img id="fullResImage" src="" alt="Full Resolution Astro Image">
-        <p id="imageDescription"></p>
+        <h1>Astro Image [Number]</h1>
+        <img src="/api/placeholder/1200/800" alt="Full Resolution Astro Image [Number]">
+        <h2>Description</h2>
+        <p>[Add your description of the image here. Include details such as the object photographed, the equipment used, the date of the photograph, and any interesting facts about the celestial object.]</p>
     </main>
-
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const imageId = urlParams.get('id');
-
-        // This is a placeholder for your image data. In a real application, you would fetch this data from a server or database.
-        const imageData = {
-            1: { src: '/api/placeholder/1200/800', title: 'Nebula', description: 'A stunning nebula captured on a clear night.' },
-            2: { src: '/api/placeholder/1200/800', title: 'Galaxy', description: 'A distant galaxy millions of light-years away.' },
-            3: { src: '/api/placeholder/1200/800', title: 'Star Cluster', description: 'A dense cluster of stars in our Milky Way.' },
-            4: { src: '/api/placeholder/1200/800', title: 'Supernova Remnant', description: 'The aftermath of a massive stellar explosion.' },
-            5: { src: '/api/placeholder/1200/800', title: 'Planet', description: 'A detailed view of a planet in our solar system.' },
-            6: { src: '/api/placeholder/1200/800', title: 'Aurora', description: 'The mesmerizing Northern Lights dancing in the sky.' }
-        };
-
-        if (imageData[imageId]) {
-            document.getElementById('imageTitle').textContent = imageData[imageId].title;
-            document.getElementById('fullResImage').src = imageData[imageId].src;
-            document.getElementById('fullResImage').alt = imageData[imageId].title;
-            document.getElementById('imageDescription').textContent = imageData[imageId].description;
-        } else {
-            document.getElementById('imageTitle').textContent = 'Image Not Found';
-            document.getElementById('imageDescription').textContent = 'Sorry, the requested image could not be found.';
-        }
-    </script>
 </body>
 </html>
