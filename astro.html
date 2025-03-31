@@ -53,20 +53,20 @@
 
     <script>
         const galleryData = [
-            { id: 1, title: "Andromeda", src: "astro-images/andromeda.jpg" },
-            { id: 2, title: "Heart Nebula", src: "astro-images/heart.jpg" },
-            { id: 3, title: "Iris Nebula", src: "astro-images/iris.png" },
-            { id: 4, title: "M1", src: "astro-images/m1.jpg" },
-            { id: 5, title: "M51 Galaxy", src: "astro-images/m51.jpg" },
-            { id: 6, title: "M81 Galaxy", src: "astro-images/m81.png" },
-            { id: 7, title: "Crescent Nebula and WR-134", src: "astro-images/ngc6888.png" },
-            { id: 8, title: "Veil Nebula", src: "astro-images/veil.png" },
+            { id: 1, title: "Andromeda", src: "assets/astro-images/andromeda.jpg" },
+            { id: 2, title: "Heart Nebula", src: "assets/astro-images/heart.jpg" },
+            { id: 3, title: "Iris Nebula", src: "assets/astro-images/iris.png" },
+            { id: 4, title: "M1", src: "assets/astro-images/m1.jpg" },
+            { id: 5, title: "M51 Galaxy", src: "assets/astro-images/m51.jpg" },
+            { id: 6, title: "M81 Galaxy", src: "assets/astro-images/m81.png" },
+            { id: 7, title: "Crescent Nebula and WR-134", src: "assets/astro-images/ngc6888.png" },
+            { id: 8, title: "Veil Nebula", src: "assets/astro-images/veil.png" },
             // Add more image data as needed
         ];
 
         function createGalleryItem(image) {
             const item = document.createElement('a');
-            item.href = `astro-image${image.id}.html`;
+            item.href = image.src;
             item.className = 'gallery-item';
             item.innerHTML = `<img src="${image.src}" alt="${image.title}">`;
             return item;
