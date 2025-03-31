@@ -44,7 +44,7 @@
         }
         body {
             margin: 0;
-            overflow: hidden; /* Prevent scrollbars for the canvas */
+            overflow: auto; /* Prevent scrollbars for the canvas */
             background-color: rgb(10, 10, 10); /* Set a fallback background color */
         }
     </style>
@@ -93,8 +93,8 @@
 
         function resizeGalleryItems() {
             const items = document.querySelectorAll('.gallery-item');
-            const maxHeight = 300;
-            const minHeight = 150;
+            const maxHeight = Math.floor(window.innerHeight * 0.4);
+            const minHeight = Math.floor(window.innerHeight * 0.2);
 
             items.forEach(item => {
                 const height = Math.floor(Math.random() * (maxHeight - minHeight + 1)) + minHeight;
