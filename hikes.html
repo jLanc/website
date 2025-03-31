@@ -31,14 +31,14 @@
     <div id="map"></div>
 
     <script>
-        mapboxgl.accessToken = 'YOUR_MAPBOX_ACCESS_TOKEN';
+        mapboxgl.accessToken = 'pk.eyJ1IjoiamxhbmMyIiwiYSI6ImNtOHdybXJvMTBpOGgyanB3cmxnaGpvZmoifQ.mpAHjbUO45286hX7oWiVNw';
         const map = new mapboxgl.Map({
             container: 'map',
-            style: 'mapbox://styles/mapbox/outdoors-v11',
-            center: [-122.4194, 37.7749], // San Francisco coordinates, replace with your preferred initial view
-            zoom: 9,
-            pitch: 60,
-            bearing: -60
+            style: 'mapbox://styles/mapbox/satellite-streets-v11', // Use satellite-streets style
+            center: [-3.204327, 54.438496], // San Francisco coordinates, replace with your preferred initial view
+            zoom: 13,
+            pitch: 55,
+            bearing: 0
         });
 
         map.on('load', () => {
