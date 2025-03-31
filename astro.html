@@ -28,19 +28,24 @@
             margin: 10px;
             overflow: hidden;
             border-radius: 15px; /* Rounded corners for a softened look */
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Soft glow effect */
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Soft glow effect */
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
         }
         .gallery-item:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.8); /* Brighter glow on hover */
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* Brighter glow on hover */
         }
         .gallery-item img {
             display: block;
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+        body {
+            margin: 0;
+            overflow: hidden; /* Prevent scrollbars for the canvas */
+            background-color: rgb(10, 10, 10); /* Set a fallback background color */
         }
     </style>
 </head>
@@ -77,9 +82,9 @@
                 stars.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
-                    radius: Math.random() * 1.5,
+                    radius: Math.random() * 2,
                     opacity: Math.random(),
-                    twinkle: Math.random() * 0.04,
+                    twinkle: Math.random() * 0.03,
                 });
             }
         }
