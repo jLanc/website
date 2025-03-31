@@ -6,6 +6,18 @@
     <title>Astro Images</title>
     <link rel="stylesheet" href="common.css">
     <style>
+        body {
+            margin: 0;
+            overflow: hidden; /* Prevent scrollbars for the canvas */
+        }
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Place the canvas behind all other elements */
+        }
         .gallery {
             display: flex;
             flex-wrap: wrap;
@@ -15,25 +27,25 @@
         .gallery-item {
             margin: 10px;
             overflow: hidden;
-            border-radius: 5px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            background-color: #292929; /* Placeholder color */
+            border-radius: 15px; /* Rounded corners for a softened look */
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Soft glow effect */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
         }
         .gallery-item:hover {
             transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.8); /* Brighter glow on hover */
         }
         .gallery-item img {
             display: block;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0;
-            transition: opacity 0.5s ease;
         }
     </style>
 </head>
 <body>
+    <canvas id="starry-background"></canvas>
     <header>
         <nav>
             <ul>
@@ -52,6 +64,55 @@
     </main>
 
     <script>
+        // Starry background
+        const canvas = document.getElementById('starry-background');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const stars = [];
+        function createStars() {
+            // Add random stars
+            for (let i = 0; i < 200; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 1.5,
+                    opacity: Math.random(),
+                    twinkle: Math.random() * 0.04,
+                });
+            }
+        }
+
+        function drawStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            stars.forEach(star => {
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+                ctx.fill();
+                star.opacity += star.twinkle * (Math.random() > 0.5 ? 1 : -1);
+                star.opacity = Math.max(0.1, Math.min(1, star.opacity)); // Clamp opacity
+            });
+        }
+
+        function animateStars() {
+            drawStars();
+            requestAnimationFrame(animateStars);
+        }
+
+        createStars();
+        animateStars();
+
+        // Resize canvas on window resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            stars.length = 0;
+            createStars();
+        });
+
+        // Gallery script
         const galleryData = [
             { id: 1, title: "Andromeda", src: "assets/astro-images/andromeda.jpg" },
             { id: 2, title: "Heart Nebula", src: "assets/astro-images/heart.jpg" },
@@ -61,12 +122,12 @@
             { id: 6, title: "M81 Galaxy", src: "assets/astro-images/m81.png" },
             { id: 7, title: "Crescent Nebula and WR-134", src: "assets/astro-images/ngc6888.png" },
             { id: 8, title: "Veil Nebula", src: "assets/astro-images/veil.png" },
-            // Add more image data as needed
         ];
 
         function createGalleryItem(image) {
             const item = document.createElement('a');
             item.href = image.src;
+            item.target = '_blank';
             item.className = 'gallery-item';
             item.innerHTML = `<img src="${image.src}" alt="${image.title}">`;
             return item;
