@@ -6,14 +6,27 @@
     <title>About Me</title>
     <link rel="stylesheet" href="common.css">
     <style>
+        body {
+            margin: 0;
+            overflow: hidden; /* Prevent scrollbars for the canvas */
+            background-color: rgb(10, 10, 10); /* Set a fallback background color */
+        }
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Place the canvas behind all other elements */
+        }
         main {
             max-width: 800px;
             margin: 80px auto 20px; /* Adjusted top margin to account for fixed header */
             padding: 20px;
-            background-color: rgb(216, 216, 216);
+            background-color: rgba(205, 204, 204, 0.9); /* Slight transparency to blend with stars */
             border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            color: black
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: black;
         }
         .profile-image {
             float: right;
@@ -23,19 +36,15 @@
             height: 200px;
             object-fit: cover;
         }
-        p {
-        font-family: Arial, sans-serif; /* Set a readable font */
-        font-size: 16px; /* Adjust font size for better readability */
-        line-height: 1.6; /* Add line height for better spacing */
-    }
-    li {
-        font-family: Arial, sans-serif; /* Set a readable font */
-        font-size: 16px; /* Adjust font size for better readability */
-        line-height: 1.6; /* Add line height for better spacing */
-    }
+        p, li {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+        }
     </style>
 </head>
 <body>
+    <canvas id="starry-background"></canvas>
     <header>
         <nav>
             <ul>
@@ -65,5 +74,7 @@
             <li>Other accessories: ASI174MM Mini guide cam, ASIAIR</li>
         </ul>
     </main>
+
+    <script src="src/starry-background.js"></script>
 </body>
 </html>
