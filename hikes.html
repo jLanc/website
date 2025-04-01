@@ -34,15 +34,15 @@
         mapboxgl.accessToken = 'pk.eyJ1IjoiamxhbmMyIiwiYSI6ImNtOHdybXJvMTBpOGgyanB3cmxnaGpvZmoifQ.mpAHjbUO45286hX7oWiVNw';
         const map = new mapboxgl.Map({
             container: 'map',
-            style: 'mapbox://styles/mapbox/satellite-streets-v11', // Use satellite-streets style
-            center: [-3.204327, 54.438496], // San Francisco coordinates, replace with your preferred initial view
+            style: 'mapbox://styles/mapbox/satellite-streets-v11', //Use satellite-streets style
+            center: [-3.204327, 54.438496], //Scarfell Pike coordinates
             zoom: 13,
             pitch: 55,
             bearing: 0
         });
 
         map.on('load', () => {
-            // Add 3D terrain
+            //Add 3D terrain
             map.addSource('mapbox-dem', {
                 'type': 'raster-dem',
                 'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
@@ -50,26 +50,671 @@
                 'maxzoom': 14
             });
             map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
-
-            // Add your GPS tracks here
-            // Example:
-            // map.addSource('hike1', {
-            //     'type': 'geojson',
-            //     'data': 'path/to/your/hike1.geojson'
-            // });
-            // map.addLayer({
-            //     'id': 'hike1-layer',
-            //     'type': 'line',
-            //     'source': 'hike1',
-            //     'layout': {
-            //         'line-join': 'round',
-            //         'line-cap': 'round'
-            //     },
-            //     'paint': {
-            //         'line-color': '#ff0000',
-            //         'line-width': 3
-            //     }
-            // });
+        
+            // Ardgarten and Loch Long Circular Walk
+            map.addSource('Ardgarten_and_Loch_Long_Circular_Walk', {
+                'type': 'geojson',
+                'data': 'assets/hikes/Ardgarten_and_Loch_Long_Circular_Walk.js'
+            });
+            map.addLayer({
+                'id': 'Ardgarten_and_Loch_Long_Circular_Walk-layer',
+                'type': 'line',
+                'source': 'Ardgarten_and_Loch_Long_Circular_Walk',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // Balloch Wood Creetown Circular
+            map.addSource('Balloch_Wood_Creetown_Circular', {
+                'type': 'geojson',
+                'data': 'assets/hikes/Balloch_Wood_Creetown_Circular.js'
+            });
+            map.addLayer({
+                'id': 'Balloch_Wood_Creetown_Circular-layer',
+                'type': 'line',
+                'source': 'Balloch_Wood_Creetown_Circular',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // Ben Aan
+            map.addSource('Ben_Aan', {
+                'type': 'geojson',
+                'data': 'assets/hikes/Ben_Aan.js'
+            });
+            map.addLayer({
+                'id': 'Ben_Aan-layer',
+                'type': 'line',
+                'source': 'Ben_Aan',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // Betws-y-Coed and River Conwy Circular
+            map.addSource('Betws-y-Coed_and_River_Conwy_Circular', {
+                'type': 'geojson',
+                'data': 'assets/hikes/Betws-y-Coed_and_River_Conwy_Circular.js'
+            });
+            map.addLayer({
+                'id': 'Betws-y-Coed_and_River_Conwy_Circular-layer',
+                'type': 'line',
+                'source': 'Betws-y-Coed_and_River_Conwy_Circular',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // Bite sized Hadrians wall 1
+            map.addSource('Bite_sized_Hadrians_wall_1', {
+                'type': 'geojson',
+                'data': 'assets/hikes/Bite_sized_Hadrians_wall_1.js'
+            });
+            map.addLayer({
+                'id': 'Bite_sized_Hadrians_wall_1-layer',
+                'type': 'line',
+                'source': 'Bite_sized_Hadrians_wall_1',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // Boltby and High Paradise Circular
+            map.addSource('Boltby_and_High_Paradise_Circular', {
+                'type': 'geojson',
+                'data': 'assets/hikes/Boltby_and_High_Paradise_Circular.js'
+            });
+            map.addLayer({
+                'id': 'Boltby_and_High_Paradise_Circular-layer',
+                'type': 'line',
+                'source': 'Boltby_and_High_Paradise_Circular',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // Bracklinn Falls
+            map.addSource('Bracklinn_Falls', {
+                'type': 'geojson',
+                'data': 'assets/hikes/Bracklinn_Falls.js'
+            });
+            map.addLayer({
+                'id': 'Bracklinn_Falls-layer',
+                'type': 'line',
+                'source': 'Bracklinn_Falls',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // Butterby Oxbow
+            map.addSource('Butterby_Oxbow', {
+                'type': 'geojson',
+                'data': 'assets/hikes/Butterby_Oxbow.js'
+            });
+            map.addLayer({
+                'id': 'Butterby_Oxbow-layer',
+                'type': 'line',
+                'source': 'Butterby_Oxbow',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // Castleton Mam Tor The Great Ridge Circular
+            map.addSource('Castleton_Mam_Tor_The_Great_Ridge_Circular', {
+                'type': 'geojson',
+                'data': 'assets/hikes/Castleton_Mam_Tor_The_Great_Ridge_Circular.js'
+            });
+            map.addLayer({
+                'id': 'Castleton_Mam_Tor_The_Great_Ridge_Circular-layer',
+                'type': 'line',
+                'source': 'Castleton_Mam_Tor_The_Great_Ridge_Circular',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // Chollerford to Once Brewed
+            map.addSource('Chollerford_to_Once_Brewed', {
+                'type': 'geojson',
+                'data': 'assets/hikes/Chollerford_to_Once_Brewed.js'
+            });
+            map.addLayer({
+                'id': 'Chollerford_to_Once_Brewed-layer',
+                'type': 'line',
+                'source': 'Chollerford_to_Once_Brewed',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // Cochrane Pike Walk
+            map.addSource('Cochrane_Pike_Walk', {
+                'type': 'geojson',
+                'data': 'assets/hikes/Cochrane_Pike_Walk.js'
+            });
+            map.addLayer({
+                'id': 'Cochrane_Pike_Walk-layer',
+                'type': 'line',
+                'source': 'Cochrane_Pike_Walk',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // Dalby Forest Woodcock Way Circular
+            map.addSource('Dalby_Forest_Woodcock_Way_Circular', {
+                'type': 'geojson',
+                'data': 'assets/hikes/Dalby_Forest_Woodcock_Way_Circular.js'
+            });
+            map.addLayer({
+                'id': 'Dalby_Forest_Woodcock_Way_Circular-layer',
+                'type': 'line',
+                'source': 'Dalby_Forest_Woodcock_Way_Circular',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // Durham1
+            map.addSource('Durham1', {
+                'type': 'geojson',
+                'data': 'assets/hikes/durham1.js'
+            });
+            map.addLayer({
+                'id': 'Durham1-layer',
+                'type': 'line',
+                'source': 'Durham1',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // Easdale Tarn Blea Rigg and Silver How Circular
+            map.addSource('Easdale_Tarn_Blea_Rigg_and_Silver_How_Circular', {
+                'type': 'geojson',
+                'data': 'assets/hikes/Easdale_Tarn_Blea_Rigg_and_Silver_How_Circular.js'
+            });
+            map.addLayer({
+                'id': 'Easdale_Tarn_Blea_Rigg_and_Silver_How_Circular-layer',
+                'type': 'line',
+                'source': 'Easdale_Tarn_Blea_Rigg_and_Silver_How_Circular',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // Ennerdale Water Circular
+            map.addSource('Ennerdale_Water_Circular', {
+                'type': 'geojson',
+                'data': 'assets/hikes/Ennerdale_Water_Circular.js'
+            });
+            map.addLayer({
+                'id': 'Ennerdale_Water_Circular-layer',
+                'type': 'line',
+                'source': 'Ennerdale_Water_Circular',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // Falling Foss from Little Beck
+            map.addSource('Falling_Foss_from_Little_Beck', {
+                'type': 'geojson',
+                'data': 'assets/hikes/Falling_Foss_from_Little_Beck.js'
+            });
+            map.addLayer({
+                'id': 'Falling_Foss_from_Little_Beck-layer',
+                'type': 'line',
+                'source': 'Falling_Foss_from_Little_Beck',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // Frith Wood and High Hows Wood
+            map.addSource('Frith_Wood_and_High_Hows_Wood', {
+                'type': 'geojson',
+                'data': 'assets/hikes/Frith_Wood_and_High_Hows_Wood.js'
+            });
+            map.addLayer({
+                'id': 'Frith_Wood_and_High_Hows_Wood-layer',
+                'type': 'line',
+                'source': 'Frith_Wood_and_High_Hows_Wood',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // Gelt Woods
+            map.addSource('Gelt_Woods', {
+                'type': 'geojson',
+                'data': 'assets/hikes/Gelt_Woods.js'
+            });
+            map.addLayer({
+                'id': 'Gelt_Woods-layer',
+                'type': 'line',
+                'source': 'Gelt_Woods',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // Great Gable from Honister
+            map.addSource('Great_Gable_from_Honister', {
+                'type': 'geojson',
+                'data': 'assets/hikes/Great_Gable_from_Honister.js'
+            });
+            map.addLayer({
+                'id': 'Great_Gable_from_Honister-layer',
+                'type': 'line',
+                'source': 'Great_Gable_from_Honister',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // High Shincliffe Circular (2)
+            map.addSource('High_Shincliffe_Circular_2', {
+                'type': 'geojson',
+                'data': 'assets/hikes/High Shincliffe Circular_(2).js'
+            });
+            map.addLayer({
+                'id': 'High_Shincliffe_Circular_2-layer',
+                'type': 'line',
+                'source': 'High_Shincliffe_Circular_2',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // High Rigg and St Johns
+            map.addSource('High_Rigg_and_St_Johns', {
+                'type': 'geojson',
+                'data': 'assets/hikes/High_Rigg_and_St_Johns.js'
+            });
+            map.addLayer({
+                'id': 'High_Rigg_and_St_Johns-layer',
+                'type': 'line',
+                'source': 'High_Rigg_and_St_Johns',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // High Shincliffe Circular
+            map.addSource('High_Shincliffe_Circular', {
+                'type': 'geojson',
+                'data': 'assets/hikes/High_Shincliffe_Circular.js'
+            });
+            map.addLayer({
+                'id': 'High_Shincliffe_Circular-layer',
+                'type': 'line',
+                'source': 'High_Shincliffe_Circular',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // Kirknewton
+            map.addSource('Kirknewton', {
+                'type': 'geojson',
+                'data': 'assets/hikes/Kirknewton.js'
+            });
+            map.addLayer({
+                'id': 'Kirknewton-layer',
+                'type': 'line',
+                'source': 'Kirknewton',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // Lambley Viaduct Circular
+            map.addSource('Lambley_Viaduct_Circular', {
+                'type': 'geojson',
+                'data': 'assets/hikes/Lambley_Viaduct_Circular.js'
+            });
+            map.addLayer({
+                'id': 'Lambley_Viaduct_Circular-layer',
+                'type': 'line',
+                'source': 'Lambley_Viaduct_Circular',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // Llyn Idwal Circular
+            map.addSource('Llyn_Idwal_Circular', {
+                'type': 'geojson',
+                'data': 'assets/hikes/Llyn_Idwal_Circular.js'
+            });
+            map.addLayer({
+                'id': 'Llyn_Idwal_Circular-layer',
+                'type': 'line',
+                'source': 'Llyn_Idwal_Circular',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // North Ridge Carpark to CIC Hut
+            map.addSource('North_Ridge_Carpark_to_CIC_Hut', {
+                'type': 'geojson',
+                'data': 'assets/hikes/North_Ridge_Carpark_to_CIC_Hut.js'
+            });
+            map.addLayer({
+                'id': 'North_Ridge_Carpark_to_CIC_Hut-layer',
+                'type': 'line',
+                'source': 'North_Ridge_Carpark_to_CIC_Hut',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // Osmotherley and the Cleveland Circular
+            map.addSource('Osmotherley_and_the_Cleveland_Circular', {
+                'type': 'geojson',
+                'data': 'assets/hikes/Osmotherley_and_the_Cleveland_Circular.js'
+            });
+            map.addLayer({
+                'id': 'Osmotherley_and_the_Cleveland_Circular-layer',
+                'type': 'line',
+                'source': 'Osmotherley_and_the_Cleveland_Circular',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // Ovingham and Whittle Dene
+            map.addSource('Ovingham_and_Whittle_Dene', {
+                'type': 'geojson',
+                'data': 'assets/hikes/Ovingham_and_Whittle_Dene.js'
+            });
+            map.addLayer({
+                'id': 'Ovingham_and_Whittle_Dene-layer',
+                'type': 'line',
+                'source': 'Ovingham_and_Whittle_Dene',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // ScafellPike
+            map.addSource('ScafellPike', {
+                'type': 'geojson',
+                'data': 'assets/hikes/ScafellPike.js'
+            });
+            map.addLayer({
+                'id': 'ScafellPike-layer',
+                'type': 'line',
+                'source': 'ScafellPike',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // Slaley Forest - Dukesfield Fell Circular
+            map.addSource('Slaley_Forest_Dukesfield_Fell_Circular', {
+                'type': 'geojson',
+                'data': 'assets/hikes/Slaley_Forest_-_Dukesfield_Fell_Circular.js'
+            });
+            map.addLayer({
+                'id': 'Slaley_Forest_Dukesfield_Fell_Circular-layer',
+                'type': 'line',
+                'source': 'Slaley_Forest_Dukesfield_Fell_Circular',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // Steall Falls Path
+            map.addSource('Steall_Falls_Path', {
+                'type': 'geojson',
+                'data': 'assets/hikes/Steall_Falls_Path.js'
+            });
+            map.addLayer({
+                'id': 'Steall_Falls_Path-layer',
+                'type': 'line',
+                'source': 'Steall_Falls_Path',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // Tarmachan Ridge Circular
+            map.addSource('Tarmachan_Ridge_Circular', {
+                'type': 'geojson',
+                'data': 'assets/hikes/Tarmachan_Ridge_Circular.js'
+            });
+            map.addLayer({
+                'id': 'Tarmachan_Ridge_Circular-layer',
+                'type': 'line',
+                'source': 'Tarmachan_Ridge_Circular',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // Treen Cove Porthglaze Cove and Pendour Beach
+            map.addSource('Treen_Cove_Porthglaze_Cove_and_Pendour_Beach', {
+                'type': 'geojson',
+                'data': 'assets/hikes/Treen_Cove_Porthglaze_Cove_and_Pendour_Beach.js'
+            });
+            map.addLayer({
+                'id': 'Treen_Cove_Porthglaze_Cove_and_Pendour_Beach-layer',
+                'type': 'line',
+                'source': 'Treen_Cove_Porthglaze_Cove_and_Pendour_Beach',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // Wolsingham and Thornley Memorial Circular
+            map.addSource('Wolsingham_and_Thornley_Memorial_Circular', {
+                'type': 'geojson',
+                'data': 'assets/hikes/Wolsingham_and_Thornley_Memorial_Circular.js'
+            });
+            map.addLayer({
+                'id': 'Wolsingham_and_Thornley_Memorial_Circular-layer',
+                'type': 'line',
+                'source': 'Wolsingham_and_Thornley_Memorial_Circular',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
+        
+            // Wolsingham to Tunstall Reservoir Circular
+            map.addSource('Wolsingham_to_Tunstall_Reservoir_Circular', {
+                'type': 'geojson',
+                'data': 'assets/hikes/Wolsingham_to_Tunstall_Reservoir_Circular.js'
+            });
+            map.addLayer({
+                'id': 'Wolsingham_to_Tunstall_Reservoir_Circular-layer',
+                'type': 'line',
+                'source': 'Wolsingham_to_Tunstall_Reservoir_Circular',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
         });
     </script>
 </body>
