@@ -34,3 +34,14 @@ assets/hikes/Bracklinn_Falls.js filter=lfs diff=lfs merge=lfs -text
 assets/hikes/High[[:space:]]Shincliffe[[:space:]]Circular_(2).js filter=lfs diff=lfs merge=lfs -text
 assets/hikes/Treen_Cove_Porthglaze_Cove_and_Pendour_Beach.js filter=lfs diff=lfs merge=lfs -text
 assets/hikes/earthmate-tracks.js filter=lfs diff=lfs merge=lfs -text
+assets/astro-images/ngc6888.png filter=lfs diff=lfs merge=lfs -text
+assets/astro-images/pelican.jpg filter=lfs diff=lfs merge=lfs -text
+assets/astro-images/veil.png filter=lfs diff=lfs merge=lfs -text
+assets/astro-images/heart.jpg filter=lfs diff=lfs merge=lfs -text
+assets/astro-images/m1.jpg filter=lfs diff=lfs merge=lfs -text
+assets/astro-images/iris.png filter=lfs diff=lfs merge=lfs -text
+assets/astro-images/m51.jpg filter=lfs diff=lfs merge=lfs -text
+assets/astro-images/m81.jpg filter=lfs diff=lfs merge=lfs -text
+assets/astro-images/ngc6888.jpg filter=lfs diff=lfs merge=lfs -text
+assets/astro-images/WR-134.jpg filter=lfs diff=lfs merge=lfs -text
+assets/astro-images/andromeda.jpg filter=lfs diff=lfs merge=lfs -text
