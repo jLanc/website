@@ -715,6 +715,25 @@
                     'line-width': 3
                 }
             });
+
+            // Earthmate tracks
+            map.addSource('Earthmate-Tracks', {
+                'type': 'geojson',
+                'data': 'assets/hikes/earthmate-tracks.js'
+            });
+            map.addLayer({
+                'id': 'Earthmate-Tracks-layer',
+                'type': 'line',
+                'source': 'Earthmate-Tracks',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+                }
+            });
         });
     </script>
 </body>
