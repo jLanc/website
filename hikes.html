@@ -734,7 +734,31 @@
                     'line-width': 3
                 }
             });
+
+            for (let i = 1; i <= 104; i++) {
+                const sourceId = `Track${i}`;
+                const layerId = `track_${i}-layer`;
+
+                map.addSource(sourceId, {
+                    type: 'geojson',
+                    data: `assets/hikes/Unnamed_tracks/track_${i}.js`
+                });
+
+                map.addLayer({
+                    id: layerId,
+                    type: 'line',
+                    source: sourceId,
+                    layout: {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                paint: {
+                    'line-color': '#ff0000',
+                    'line-width': 3
+             }
+            });
+}
         });
-    </script>
+</script>
 </body>
 </html>
