@@ -73,11 +73,14 @@
             'ngc6888.jpg',
             'pelican.jpg',
             'c80.jpg',
-            'carinaSHOcity.jpg'
+            'carinaSHOcity.jpg',
+            'horsehead_nebula.jpg',
+            'Orion_Nebula.jpg',
+            'Anteater_Nebula.jpg'
             // Add more image filenames here
         ];
         const images = imageFiles.map(file => imageFolder + file);
-        let currentSlide = 0;
+        let currentSlide = Math.floor(Math.random() * images.length);
         const ANIMATION_DURATION = 5000; // 5 seconds
         const MAX_MOVE_PERCENT = 10;
 
@@ -161,7 +164,7 @@
                 slideshow.appendChild(slide);
             });
             
-            showSlide(0);
+            showSlide(currentSlide);
             setInterval(nextSlide, ANIMATION_DURATION);
         }
 
