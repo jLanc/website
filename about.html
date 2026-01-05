@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,26 +9,38 @@
     <style>
         body {
             margin: 0;
-            overflow: auto; /* Prevent scrollbars for the canvas */
-            background-color: rgb(10, 10, 10); /* Set a fallback background color */
+            overflow: auto;
+            /* Prevent scrollbars for the canvas */
+            background-color: rgb(10, 10, 10);
+            /* Set a fallback background color */
         }
+
         canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Place the canvas behind all other elements */
+            z-index: -1;
+            /* Place the canvas behind all other elements */
         }
+
         main {
             max-width: 800px;
-            margin: 80px auto 20px; /* Adjusted top margin to account for fixed header */
+            margin: 80px auto 20px;
+            /* Adjusted top margin to account for fixed header */
             padding: 20px;
-            background-color: rgba(205, 204, 204, 0.9); /* Slight transparency to blend with stars */
+            background-color: rgba(205, 204, 204, 0.9);
+            /* Slight transparency to blend with stars */
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             color: black;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
+
         .profile-image {
             float: right;
             margin: 0 0 20px 20px;
@@ -36,13 +49,16 @@
             height: 200px;
             object-fit: cover;
         }
-        p, li {
+
+        p,
+        li {
             font-family: Arial, sans-serif;
             font-size: 16px;
             line-height: 1.6;
         }
     </style>
 </head>
+
 <body>
     <canvas id="starry-background"></canvas>
     <header>
@@ -62,7 +78,8 @@
         <img src="assets/me.jpg" alt="Profile Picture" class="profile-image">
         <p>Hello! I'm Jake. I'm passionate about astronomy, hiking and computers.</p>
         <p>My love for astronomy began when I grew up in one of the darkest places in the world, rural Australia.
-            I started with a small star tracker and a DSLR camera, and over the years, I've upgraded to a telescope, dedicated astro camera
+            I started with a small star tracker and a DSLR camera, and over the years, I've upgraded to a telescope,
+            dedicated astro camera
             and high end astrophotography mount.
         </p>
         <p>When I'm not stargazing, you can often find me hiking the UK mountains!</p>
@@ -78,4 +95,5 @@
 
     <script src="src/starry-background.js"></script>
 </body>
+
 </html>
