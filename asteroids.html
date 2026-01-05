@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asteroid Tracking</title>
+    <link rel="stylesheet" href="common.css">
+    <style>
+        body {
+            margin: 0;
+            overflow: auto;
+            background-color: rgb(10, 10, 10);
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        main {
+            max-width: 100%;
+            margin: 80px 0 20px;
+            padding: 20px;
+            min-height: calc(100vh - 100px);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 40px;
+        }
+
+        .asteroid-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .asteroid-item {
+            background-color: rgba(30, 30, 30, 0.9);
+            border-radius: 15px;
+            padding: 20px 20px 0 20px;
+            box-shadow: 0 0 20px rgba(212, 93, 8, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .asteroid-item h2 {
+            color: #ffffff;
+            font-family: 'Orbitron', sans-serif;
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .asteroid-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+            background-color: #000;
+            margin: 0 auto;
+            object-fit: contain;
+        }
+
+        @media (max-width: 1024px) {
+            .asteroid-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .asteroid-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="starry-background"></canvas>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="astro.html">Astro Images</a></li>
+                <li><a href="asteroids.html">Asteroids</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="hikes.html">Hikes</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Asteroid Tracking</h1>
+        <div class="asteroid-gallery" id="asteroid-gallery">
+            <!-- Asteroid items will be dynamically added here -->
+        </div>
+    </main>
+    <script src="src/starry-background.js"></script>
+    <script>
+        // Asteroid data - add your asteroid GIF filenames and titles here
+        const asteroidData = [
+            { title: "Kaluna - 10686", src: "assets/asteroids/Kaluna_(10686).gif" },
+            { title: "Walkure - 477", src: "assets/asteroids/Walkure_(877).gif" },
+            { title: "1999 GB37 - 56209", src: "assets/asteroids/1999 GB37_(56209).gif" }
+            // Add more asteroids here
+        ];
+        function createAsteroidItem(asteroid) {
+            const item = document.createElement('div');
+            item.className = 'asteroid-item';
+            item.innerHTML = `
+                <h2>${asteroid.title}</h2>
+                <img src="${asteroid.src}" alt="${asteroid.title} tracking animation">
+            `;
+            return item;
+        }
+        window.addEventListener('DOMContentLoaded', () => {
+            const gallery = document.getElementById('asteroid-gallery');
+            asteroidData.forEach(asteroid => {
+                gallery.appendChild(createAsteroidItem(asteroid));
+            });
+        });
+    </script>
+</body>
+
+</html>
