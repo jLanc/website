@@ -102,19 +102,16 @@
         </nav>
     </header>
     <main>
-        <h1>Asteroid Tracking</h1>
         <div class="asteroid-gallery" id="asteroid-gallery">
-            <!-- Asteroid items will be dynamically added here -->
+            <!-- Asteroid gifs will be dynamically added here -->
         </div>
     </main>
     <script src="src/starry-background.js"></script>
     <script>
-        // Asteroid data - add your asteroid GIF filenames and titles here
         const asteroidData = [
             { title: "Kaluna - 10686", src: "assets/asteroids/Kaluna_(10686).gif" },
             { title: "Walkure - 477", src: "assets/asteroids/Walkure_(877).gif" },
             { title: "1999 GB37 - 56209", src: "assets/asteroids/1999 GB37_(56209).gif" }
-            // Add more asteroids here
         ];
         function createAsteroidItem(asteroid) {
             const item = document.createElement('div');
