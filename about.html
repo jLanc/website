@@ -28,17 +28,22 @@
         main {
             max-width: 800px;
             margin: 80px auto 20px;
-            /* Adjusted top margin to account for fixed header */
             padding: 20px;
             background-color: rgba(205, 204, 204, 0.9);
             /* Slight transparency to blend with stars */
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             color: black;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        }
+
+        @media (min-height: 800px) {
+            main {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                margin: 0;
+            }
         }
 
         .profile-image {
