@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,22 +11,24 @@
     <style>
         #map {
             position: absolute;
-            top: 60px; /* Adjusted to match header height */
+            top: 60px;
+            /* Adjusted to match header height */
             bottom: 0;
             width: 100%;
         }
     </style>
 </head>
+
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="astro.html">Astro Images</a></li>
-                <li><a href="asteroids.html">Asteroids</a></li>
-                <li><a href="astro_tools.html">Astro Tools</a></li>
-                <li><a href="about.html">About Me</a></li>
-                <li><a href="hikes.html">Hikes</a></li>
+                <li><a style="white-space: nowrap;" href="index.html">Home</a></li>
+                <li><a style="white-space: nowrap;" href="astro.html">Astro Images</a></li>
+                <li><a style="white-space: nowrap;" href="asteroids.html">Asteroids</a></li>
+                <li><a style="white-space: nowrap;" href="astro_tools.html">Astro Tools</a></li>
+                <li><a style="white-space: nowrap;" href="about.html">About Me</a></li>
+                <li><a style="white-space: nowrap;" href="hikes.html">Hikes</a></li>
             </ul>
         </nav>
     </header>
@@ -52,7 +55,7 @@
                 'maxzoom': 14
             });
             map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
-        
+
             // Ardgarten and Loch Long Circular Walk
             map.addSource('Ardgarten_and_Loch_Long_Circular_Walk', {
                 'type': 'geojson',
@@ -71,7 +74,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // Balloch Wood Creetown Circular
             map.addSource('Balloch_Wood_Creetown_Circular', {
                 'type': 'geojson',
@@ -90,7 +93,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // Ben Aan
             map.addSource('Ben_Aan', {
                 'type': 'geojson',
@@ -109,7 +112,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // Betws-y-Coed and River Conwy Circular
             map.addSource('Betws-y-Coed_and_River_Conwy_Circular', {
                 'type': 'geojson',
@@ -128,7 +131,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // Bite sized Hadrians wall 1
             map.addSource('Bite_sized_Hadrians_wall_1', {
                 'type': 'geojson',
@@ -147,7 +150,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // Boltby and High Paradise Circular
             map.addSource('Boltby_and_High_Paradise_Circular', {
                 'type': 'geojson',
@@ -166,7 +169,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // Bracklinn Falls
             map.addSource('Bracklinn_Falls', {
                 'type': 'geojson',
@@ -185,7 +188,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // Butterby Oxbow
             map.addSource('Butterby_Oxbow', {
                 'type': 'geojson',
@@ -204,7 +207,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // Castleton Mam Tor The Great Ridge Circular
             map.addSource('Castleton_Mam_Tor_The_Great_Ridge_Circular', {
                 'type': 'geojson',
@@ -223,7 +226,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // Chollerford to Once Brewed
             map.addSource('Chollerford_to_Once_Brewed', {
                 'type': 'geojson',
@@ -242,7 +245,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // Cochrane Pike Walk
             map.addSource('Cochrane_Pike_Walk', {
                 'type': 'geojson',
@@ -261,7 +264,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // Dalby Forest Woodcock Way Circular
             map.addSource('Dalby_Forest_Woodcock_Way_Circular', {
                 'type': 'geojson',
@@ -280,7 +283,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // Durham1
             map.addSource('Durham1', {
                 'type': 'geojson',
@@ -299,7 +302,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // Easdale Tarn Blea Rigg and Silver How Circular
             map.addSource('Easdale_Tarn_Blea_Rigg_and_Silver_How_Circular', {
                 'type': 'geojson',
@@ -318,7 +321,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // Ennerdale Water Circular
             map.addSource('Ennerdale_Water_Circular', {
                 'type': 'geojson',
@@ -337,7 +340,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // Falling Foss from Little Beck
             map.addSource('Falling_Foss_from_Little_Beck', {
                 'type': 'geojson',
@@ -356,7 +359,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // Frith Wood and High Hows Wood
             map.addSource('Frith_Wood_and_High_Hows_Wood', {
                 'type': 'geojson',
@@ -375,7 +378,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // Gelt Woods
             map.addSource('Gelt_Woods', {
                 'type': 'geojson',
@@ -394,7 +397,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // Great Gable from Honister
             map.addSource('Great_Gable_from_Honister', {
                 'type': 'geojson',
@@ -413,7 +416,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // High Shincliffe Circular (2)
             map.addSource('High_Shincliffe_Circular_2', {
                 'type': 'geojson',
@@ -432,7 +435,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // High Rigg and St Johns
             map.addSource('High_Rigg_and_St_Johns', {
                 'type': 'geojson',
@@ -451,7 +454,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // High Shincliffe Circular
             map.addSource('High_Shincliffe_Circular', {
                 'type': 'geojson',
@@ -470,7 +473,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // Kirknewton
             map.addSource('Kirknewton', {
                 'type': 'geojson',
@@ -489,7 +492,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // Lambley Viaduct Circular
             map.addSource('Lambley_Viaduct_Circular', {
                 'type': 'geojson',
@@ -508,7 +511,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // Llyn Idwal Circular
             map.addSource('Llyn_Idwal_Circular', {
                 'type': 'geojson',
@@ -527,7 +530,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // North Ridge Carpark to CIC Hut
             map.addSource('North_Ridge_Carpark_to_CIC_Hut', {
                 'type': 'geojson',
@@ -546,7 +549,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // Osmotherley and the Cleveland Circular
             map.addSource('Osmotherley_and_the_Cleveland_Circular', {
                 'type': 'geojson',
@@ -565,7 +568,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // Ovingham and Whittle Dene
             map.addSource('Ovingham_and_Whittle_Dene', {
                 'type': 'geojson',
@@ -584,7 +587,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // ScafellPike
             map.addSource('ScafellPike', {
                 'type': 'geojson',
@@ -603,7 +606,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // Slaley Forest - Dukesfield Fell Circular
             map.addSource('Slaley_Forest_Dukesfield_Fell_Circular', {
                 'type': 'geojson',
@@ -622,7 +625,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // Steall Falls Path
             map.addSource('Steall_Falls_Path', {
                 'type': 'geojson',
@@ -641,7 +644,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // Tarmachan Ridge Circular
             map.addSource('Tarmachan_Ridge_Circular', {
                 'type': 'geojson',
@@ -660,7 +663,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // Treen Cove Porthglaze Cove and Pendour Beach
             map.addSource('Treen_Cove_Porthglaze_Cove_and_Pendour_Beach', {
                 'type': 'geojson',
@@ -679,7 +682,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // Wolsingham and Thornley Memorial Circular
             map.addSource('Wolsingham_and_Thornley_Memorial_Circular', {
                 'type': 'geojson',
@@ -698,7 +701,7 @@
                     'line-width': 3
                 }
             });
-        
+
             // Wolsingham to Tunstall Reservoir Circular
             map.addSource('Wolsingham_to_Tunstall_Reservoir_Circular', {
                 'type': 'geojson',
@@ -751,16 +754,17 @@
                     type: 'line',
                     source: sourceId,
                     layout: {
-                    'line-join': 'round',
-                    'line-cap': 'round'
-                },
-                paint: {
-                    'line-color': '#ff0000',
-                    'line-width': 3
-             }
-            });
-}
+                        'line-join': 'round',
+                        'line-cap': 'round'
+                    },
+                    paint: {
+                        'line-color': '#ff0000',
+                        'line-width': 3
+                    }
+                });
+            }
         });
-</script>
+    </script>
 </body>
+
 </html>

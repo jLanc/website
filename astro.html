@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,58 +9,73 @@
     <style>
         body {
             margin: 0;
-            overflow: hidden; /* Prevent scrollbars for the canvas */
+            overflow: hidden;
+            /* Prevent scrollbars for the canvas */
         }
+
         canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Place the canvas behind all other elements */
+            z-index: -1;
+            /* Place the canvas behind all other elements */
         }
+
         .gallery {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             padding: 20px;
         }
+
         .gallery-item {
             margin: 10px;
             overflow: hidden;
-            border-radius: 15px; /* Rounded corners for a softened look */
-            box-shadow: 0 0 10px rgba(164, 164, 164, 0.5); /* Soft glow effect */
+            border-radius: 15px;
+            /* Rounded corners for a softened look */
+            box-shadow: 0 0 10px rgba(164, 164, 164, 0.5);
+            /* Soft glow effect */
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Semi-transparent background */
         }
+
         .gallery-item:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(215, 215, 215, 0.8); /* Brighter glow on hover */
+            box-shadow: 0 0 20px rgba(215, 215, 215, 0.8);
+            /* Brighter glow on hover */
         }
+
         .gallery-item img {
             display: block;
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
+
         body {
             margin: 0;
-            overflow: auto; /* Prevent scrollbars for the canvas */
-            background-color: rgb(10, 10, 10); /* Set a fallback background color */
+            overflow: auto;
+            /* Prevent scrollbars for the canvas */
+            background-color: rgb(10, 10, 10);
+            /* Set a fallback background color */
         }
     </style>
 </head>
+
 <body>
     <canvas id="starry-background"></canvas>
     <header>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="astro.html">Astro Images</a></li>
-                <li><a href="asteroids.html">Asteroids</a></li>
-                <li><a href="astro_tools.html">Astro Tools</a></li>
-                <li><a href="about.html">About Me</a></li>
-                <li><a href="hikes.html">Hikes</a></li>
+                <li><a style="white-space: nowrap;" href="index.html">Home</a></li>
+                <li><a style="white-space: nowrap;" href="astro.html">Astro Images</a></li>
+                <li><a style="white-space: nowrap;" href="asteroids.html">Asteroids</a></li>
+                <li><a style="white-space: nowrap;" href="astro_tools.html">Astro Tools</a></li>
+                <li><a style="white-space: nowrap;" href="about.html">About Me</a></li>
+                <li><a style="white-space: nowrap;" href="hikes.html">Hikes</a></li>
             </ul>
         </nav>
     </header>
@@ -123,7 +139,7 @@
 
             const images = document.querySelectorAll('.gallery-item img');
             images.forEach(img => {
-                img.onload = function() {
+                img.onload = function () {
                     this.style.opacity = 1;
                 };
             });
@@ -132,4 +148,5 @@
         window.addEventListener('resize', resizeGalleryItems);
     </script>
 </body>
+
 </html>
