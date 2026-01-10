@@ -51,3 +51,5 @@ assets/astro-images/horsehead_nebula.jpg filter=lfs diff=lfs merge=lfs -text
 assets/asteroids/1999[[:space:]]GB37_(56209).gif filter=lfs diff=lfs merge=lfs -text
 assets/asteroids/Kaluna_(10686).gif filter=lfs diff=lfs merge=lfs -text
 assets/asteroids/Walkure_(877).gif filter=lfs diff=lfs merge=lfs -text
+assets/images/github-mark.svg filter=lfs diff=lfs merge=lfs -text
+assets/images/me.jpg filter=lfs diff=lfs merge=lfs -text

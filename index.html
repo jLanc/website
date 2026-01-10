@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Website</title>
     <link rel="stylesheet" href="common.css">
     <style>
-        body, html {
+        body,
+        html {
             height: 100%;
             margin: 0;
             overflow: hidden;
         }
+
         #slideshow {
             position: fixed;
             top: 0;
@@ -20,6 +23,7 @@
             overflow: hidden;
             background-color: black;
         }
+
         .slide {
             position: absolute;
             top: 0;
@@ -30,9 +34,11 @@
             transition: opacity 1s ease-in-out;
             will-change: opacity;
         }
+
         .slide.active {
             opacity: 1;
         }
+
         .slide img {
             position: absolute;
             top: 50%;
@@ -43,16 +49,17 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="astro.html">Astro Images</a></li>
-                <li><a href="asteroids.html">Asteroids</a></li>
-                <li><a href="astro_tools.html">Astro Tools</a></li>
-                <li><a href="about.html">About Me</a></li>
-                <li><a href="hikes.html">Hikes</a></li>
+                <li><a style="white-space: nowrap;" href="index.html">Home</a></li>
+                <li><a style="white-space: nowrap;" href="astro.html">Astro Images</a></li>
+                <li><a style="white-space: nowrap;" href="asteroids.html">Asteroids</a></li>
+                <li><a style="white-space: nowrap;" href="astro_tools.html">Astro Tools</a></li>
+                <li><a style="white-space: nowrap;" href="about.html">About Me</a></li>
+                <li><a style="white-space: nowrap;" href="hikes.html">Hikes</a></li>
             </ul>
         </nav>
     </header>
@@ -120,10 +127,10 @@
         function calculateTransform(img, containerWidth, containerHeight) {
             const minScale = calculateMinScale(img, containerWidth, containerHeight);
             const scale = minScale * (1 + Math.random() * 0.1);
-            
+
             const maxMoveX = (containerWidth * MAX_MOVE_PERCENT / 200) / minScale;
             const maxMoveY = (containerHeight * MAX_MOVE_PERCENT / 200) / minScale;
-            
+
             const translateX = Math.random() * maxMoveX * 2 - maxMoveX;
             const translateY = Math.random() * maxMoveY * 2 - maxMoveY;
 
@@ -165,7 +172,7 @@
                 slide.dataset.endTransform = calculateTransform(img, containerWidth, containerHeight);
                 slideshow.appendChild(slide);
             });
-            
+
             showSlide(currentSlide);
             setInterval(nextSlide, ANIMATION_DURATION);
         }
@@ -187,4 +194,5 @@
         });
     </script>
 </body>
+
 </html>
