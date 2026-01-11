@@ -53,3 +53,4 @@ assets/asteroids/Kaluna_(10686).gif filter=lfs diff=lfs merge=lfs -text
 assets/asteroids/Walkure_(877).gif filter=lfs diff=lfs merge=lfs -text
 assets/images/github-mark.svg filter=lfs diff=lfs merge=lfs -text
 assets/images/me.jpg filter=lfs diff=lfs merge=lfs -text
+assets/astro-images/IC2118.jpg filter=lfs diff=lfs merge=lfs -text
