@@ -15,41 +15,6 @@ async function runTool(event, toolName) {
     resultDiv.classList.add('show');
     resultDiv.textContent = 'Running...';
 
-    // Template for calling backend python scripts
-    // Included for future dev but not used now
-
-
-    /* Build CLI-style parameters for other tools
-    const params = [];
-    for (let [key, value] of formData.entries()) {
-        params.push(`--${key}`);
-        params.push(value);
-    }
-
-    try {
-        // Call your Python backend
-        const response = await fetch('/api/astro-tools', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                tool: toolName,
-                params: params
-            })
-        });
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const result = await response.json();
-        resultDiv.textContent = `Command: python ${toolName}.py ${params.join(' ')}\n\nResult:\n${JSON.stringify(result, null, 2)}`;
-
-    } catch (error) {
-        resultDiv.textContent = `Error: ${error.message}`;
-    }*/
-
     return false;
 }
 
