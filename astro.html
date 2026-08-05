@@ -117,7 +117,7 @@
         // served from Cloudflare R2 so the repository stays small as more images
         // are added. Set this to your bucket's public URL or custom domain, e.g.
         //   "https://images.example.com"   or   "https://pub-<hash>.r2.dev"
-        const R2_BASE = "https://REPLACE-ME.r2.dev";
+        const R2_BASE = "https://images.jakeastro.io";
 
         function fullResUrl(src) {
             return `${R2_BASE}/${encodeURIComponent(src.split('/').pop())}`;
