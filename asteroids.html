@@ -22,67 +22,51 @@
             z-index: -1;
         }
 
-        main {
-            max-width: 100%;
-            margin: 80px 0 20px;
-            padding: 20px;
-            min-height: calc(100vh - 100px);
-        }
-
-        h1 {
-            text-align: center;
-            color: #ffffff;
-            font-family: 'Orbitron', sans-serif;
-            margin-bottom: 40px;
-        }
-
         .asteroid-gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             padding: 20px;
-            max-width: 1400px;
-            margin: 0 auto;
         }
 
         .asteroid-item {
-            background-color: rgba(30, 30, 30, 0.9);
+            margin: 10px;
+            overflow: hidden;
             border-radius: 15px;
-            padding: 20px 20px 0 20px;
-            box-shadow: 0 0 20px rgba(212, 93, 8, 0.3);
+            /* Rounded corners */
+            box-shadow: 0 0 10px rgba(164, 164, 164, 0.5);
+            /* Soft glow effect */
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Semi-transparent background */
             display: flex;
             flex-direction: column;
-            height: 100%;
-        }
-
-        .asteroid-item h2 {
-            color: #ffffff;
-            font-family: 'Orbitron', sans-serif;
-            margin-top: 0;
-            margin-bottom: 15px;
-            text-align: center;
+            text-decoration: none;
+            color: inherit;
         }
 
         .asteroid-item img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
             display: block;
-            background-color: #000;
-            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+            min-height: 0;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.6s ease;
         }
 
-        @media (max-width: 1024px) {
-            .asteroid-gallery {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        .asteroid-gallery-caption {
+            padding: 8px 10px;
+            font-size: 0.8rem;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
-        @media (max-width: 640px) {
-            .asteroid-gallery {
-                grid-template-columns: 1fr;
-            }
+        .asteroid-item img.loaded {
+            opacity: 1;
         }
     </style>
 </head>
@@ -116,18 +100,53 @@
         function createAsteroidItem(asteroid) {
             const item = document.createElement('div');
             item.className = 'asteroid-item';
-            item.innerHTML = `
-                <h2>${asteroid.title}</h2>
-                <img src="${asteroid.src}" alt="${asteroid.title} tracking animation">
-            `;
+
+            const img = document.createElement('img');
+            img.alt = `${asteroid.title} tracking animation`;
+            img.loading = 'lazy';
+            img.decoding = 'async';
+            img.src = asteroid.src;
+            revealWhenReady(img);
+
+            const caption = document.createElement('span');
+            caption.className = 'asteroid-gallery-caption';
+            caption.textContent = asteroid.title;
+
+            item.appendChild(img);
+            item.appendChild(caption);
             return item;
         }
+
+        function resizeAsteroidItems() {
+            const size = Math.floor(window.innerHeight * 0.4);
+            document.querySelectorAll('.asteroid-item').forEach(item => {
+                item.style.width = `${size}px`;
+                item.style.height = `${size}px`;
+            });
+        }
+
         window.addEventListener('DOMContentLoaded', () => {
             const gallery = document.getElementById('asteroid-gallery');
             asteroidData.forEach(asteroid => {
                 gallery.appendChild(createAsteroidItem(asteroid));
             });
+            resizeAsteroidItems();
         });
+
+        window.addEventListener('resize', resizeAsteroidItems);
+
+        function revealWhenReady(img) {
+            const show = () => requestAnimationFrame(() =>
+                requestAnimationFrame(() => img.classList.add('loaded'))
+            );
+
+            if (img.complete && img.naturalWidth > 0) {
+                show();
+            } else {
+                img.addEventListener('load', show, { once: true });
+                img.addEventListener('error', show, { once: true });
+            }
+        }
     </script>
 </body>
 
