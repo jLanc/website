@@ -1,0 +1,5 @@
+# Build output — 4K images staged for upload to R2, never committed
+build/
+
+# macOS
+.DS_Store

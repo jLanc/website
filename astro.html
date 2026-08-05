@@ -112,12 +112,25 @@
             { id: 19, title: "The Tail Of RHO", src: "assets/astro-images/Tail_Of_RHO.jpg" }
         ];
 
+        // Gallery tiles load the small thumbnails committed to this repo.
+        // Clicking a tile opens the full-resolution (up to 4K) version, which is
+        // served from Cloudflare R2 so the repository stays small as more images
+        // are added. Set this to your bucket's public URL or custom domain, e.g.
+        //   "https://images.example.com"   or   "https://pub-<hash>.r2.dev"
+        const R2_BASE = "https://REPLACE-ME.r2.dev";
+
+        function fullResUrl(src) {
+            return `${R2_BASE}/${encodeURIComponent(src.split('/').pop())}`;
+        }
+
         function createGalleryItem(image) {
             const item = document.createElement('a');
-            item.href = image.src;
+            item.href = fullResUrl(image.src);
             item.target = '_blank';
+            item.rel = 'noopener';
             item.className = 'gallery-item';
-            item.innerHTML = `<img src="${image.src}" alt="${image.title}">`;
+            item.title = image.title;
+            item.innerHTML = `<img src="${image.src}" alt="${image.title}" loading="lazy" decoding="async">`;
             return item;
         }
 
