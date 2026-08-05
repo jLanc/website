@@ -136,6 +136,7 @@
 
         window.addEventListener('DOMContentLoaded', () => {
             const gallery = document.getElementById('gallery');
+            galleryData.reverse();
             galleryData.forEach(image => {
                 gallery.appendChild(createGalleryItem(image));
             });
