@@ -5,83 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Astro Images</title>
-    <link rel="stylesheet" href="common.css">
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-        }
-
-        canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .gallery-item {
-            margin: 10px;
-            overflow: hidden;
-            border-radius: 15px;
-            /* Rounded corners */
-            box-shadow: 0 0 10px rgba(164, 164, 164, 0.5);
-            /* Soft glow effect */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            background-color: rgba(0, 0, 0, 0.5);
-            /* Semi-transparent background */
-            display: flex;
-            flex-direction: column;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(215, 215, 215, 0.8);
-            /* Brighter glow on hover */
-        }
-
-        .gallery-item img {
-            display: block;
-            width: 100%;
-            flex: 1;
-            min-height: 0;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 0.6s ease;
-        }
-
-        .gallery-caption {
-            padding: 8px 10px;
-            font-size: 0.8rem;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.6);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .gallery-item img.loaded {
-            opacity: 1;
-        }
-
-        body {
-            margin: 0;
-            overflow: auto;
-            /* Prevent scrollbars for the canvas */
-            background-color: rgb(10, 10, 10);
-            /* Set a fallback background color */
-        }
-    </style>
+    <link rel="stylesheet" href="src/common.css">
+    <link rel="stylesheet" href="src/gallery.css">
 </head>
 
 <body>
@@ -101,13 +26,13 @@
 
     <main>
         <div class="gallery" id="gallery">
-            <!-- Gallery items will be dynamically added here -->
+            <!-- Gallery items are dynamically added here -->
         </div>
     </main>
 
     <script src="src/starry-background.js"></script>
+    <script src="src/gallery.js"></script>
     <script>
-        // Gallery script
         const galleryData = [
             { id: 1, title: "Andromeda", src: "assets/astro-images/andromeda.jpg" },
             { id: 2, title: "Heart Nebula", src: "assets/astro-images/heart.jpg" },
@@ -130,75 +55,6 @@
             { id: 18, title: "The Tadpole Nebula", src: "assets/astro-images/Tadpole_Nebula.jpg" },
             { id: 19, title: "The Tail Of RHO", src: "assets/astro-images/Tail_Of_RHO.jpg" }
         ];
-
-        // Gallery tiles load the small thumbnails committed to this repo.
-        // Clicking a tile opens the full-resolution (up to 4K) version, which is
-        // served from Cloudflare R2 so the repository stays small as more images
-        // are added. Set this to your bucket's public URL or custom domain, e.g.
-        //   "https://images.example.com"   or   "https://pub-<hash>.r2.dev"
-        const R2_BASE = "https://images.jakeastro.io";
-
-        function fullResUrl(src) {
-            return `${R2_BASE}/${encodeURIComponent(src.split('/').pop())}`;
-        }
-
-        function createGalleryItem(image) {
-            const item = document.createElement('a');
-            item.href = fullResUrl(image.src);
-            item.target = '_blank';
-            item.rel = 'noopener';
-            item.className = 'gallery-item';
-
-            const img = document.createElement('img');
-            img.alt = image.title;
-            img.decoding = 'async';
-            img.src = image.src;
-            revealWhenReady(img);
-            item.appendChild(img);
-
-            const caption = document.createElement('span');
-            caption.className = 'gallery-caption';
-            caption.textContent = image.title;
-            item.appendChild(caption);
-            return item;
-        }
-
-        function resizeGalleryItems() {
-            const items = document.querySelectorAll('.gallery-item');
-            const maxHeight = Math.floor(window.innerHeight * 0.4);
-            const minHeight = Math.floor(window.innerHeight * 0.2);
-
-            items.forEach(item => {
-                const height = Math.floor(maxHeight - minHeight) + minHeight;
-                const width = height;   // Create square image tiles
-                item.style.width = `${width}px`;
-                item.style.height = `${height}px`;
-            });
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const gallery = document.getElementById('gallery');
-            galleryData.reverse();
-            galleryData.forEach(image => {
-                gallery.appendChild(createGalleryItem(image));
-            });
-            resizeGalleryItems();
-        });
-
-        function revealWhenReady(img) {
-            const show = () => requestAnimationFrame(() =>
-                requestAnimationFrame(() => img.classList.add('loaded'))
-            );
-
-            if (img.complete && img.naturalWidth > 0) {
-                show();
-            } else {
-                img.addEventListener('load', show, { once: true });
-                img.addEventListener('error', show, { once: true });
-            }
-        }
-
-        window.addEventListener('resize', resizeGalleryItems);
     </script>
 </body>
 
