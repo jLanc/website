@@ -1,7 +1,8 @@
 /* common.css */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
-body, html {
+body,
+html {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
@@ -40,9 +41,10 @@ nav ul li a {
     font-family: 'Orbitron', sans-serif;
     font-size: 20px;
     transition: color 0.3s ease;
+
     .dontwrap {
         white-space: nowrap;
-      }
+    }
 }
 
 nav ul li a:hover {
@@ -50,7 +52,8 @@ nav ul li a:hover {
 }
 
 main {
-    margin-top: 80px; /* Adjust based on header height */
+    margin-top: 80px;
+    /* Adjust based on header height */
     padding: 20px;
 }
 
@@ -58,4 +61,8 @@ body {
     background-color: #222222;
     color: #fff;
     font-family: 'Orbitron', sans-serif;
+}
+
+fluid-container canvas {
+    display: block;
 }

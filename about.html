@@ -10,19 +10,11 @@
         body {
             margin: 0;
             overflow: auto;
-            /* Prevent scrollbars for the canvas */
             background-color: rgb(10, 10, 10);
-            /* Set a fallback background color */
         }
 
-        canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            /* Place the canvas behind all other elements */
+        #fluid-container canvas {
+            display: block;
         }
 
         main {
@@ -30,7 +22,6 @@
             margin: 80px auto 20px;
             padding: 20px;
             background-color: rgba(205, 204, 204, 0.9);
-            /* Slight transparency to blend with stars */
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             color: black;
@@ -74,7 +65,6 @@
 </head>
 
 <body>
-    <canvas id="starry-background"></canvas>
     <header>
         <nav>
             <ul>
@@ -83,7 +73,7 @@
                 <li><a style="white-space: nowrap;" href="asteroids.html">Asteroids</a></li>
                 <li><a style="white-space: nowrap;" href="astro_tools.html">Astro Tools</a></li>
                 <li><a style="white-space: nowrap;" href="about.html">About Me</a></li>
-                <li><a style="white-space: nowrap;"href="hikes.html">Hikes</a></li>
+                <li><a style="white-space: nowrap;" href="hikes.html">Hikes</a></li>
             </ul>
         </nav>
     </header>
@@ -91,7 +81,6 @@
     <main>
         <h1>About Me</h1>
         <img src="assets/images/me.jpg" alt="Profile Picture" class="profile-image">
-        <!--img src="assets/images/telescope.jpg" alt="Telescope" class="telescope-image"-->
         <p>Hello! I'm Jake. I'm passionate about astronomy, hiking and computers.</p>
         <p>My love for astronomy began when I grew up in one of the darkest places in the world, rural Australia.
             I started with a small star tracker and a DSLR camera, and over the years, I've upgraded to a telescope,
@@ -107,9 +96,8 @@
             <li>Mount: Rainbow Astro RST-135</li>
             <li>Other accessories: ASI174MM Mini guide cam, ASIAIR</li>
         </ul>
-    </main>
-
-    <script src="src/starry-background.js"></script>
+    </main> 
+    <script type="module" src="src/fluid-background.js?auto"></script>
 </body>
 
 </html>
