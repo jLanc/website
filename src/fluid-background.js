@@ -8,14 +8,14 @@ const DEFAULTS = {
   hover: true,             // react to moouse movement
   curl: 0,                 
   splatRadius: 0.15,
-  splatForce: 1200,        // the 6000 default is far too energetic behind text
+  splatForce: 1000,        // the 6000 default is far too energetic behind text
   velocityDissipation: 0.4,
-  densityDissipation: 0.2, // lower = the initial glow lingers longer
+  densityDissipation: 0.1, // lower = the initial glow lingers longer
   simResolution: 64,       
   dyeResolution: 512,
   pressureIterations: 8,
   brightness: 0.2,
-  colorful: false,
+  colorful: true,
   bloom: true,
   bloomIntensity: 0.25,
   sunrays: true,
