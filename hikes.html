@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hikes</title>
     <link rel="stylesheet" href="src/common.css">
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v3.18.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v3.18.1/mapbox-gl.css' rel='stylesheet' />
     <style>
         #map {
             position: absolute;
@@ -39,12 +39,13 @@
         mapboxgl.accessToken = 'pk.eyJ1IjoiamxhbmMyIiwiYSI6ImNtOHdybXJvMTBpOGgyanB3cmxnaGpvZmoifQ.mpAHjbUO45286hX7oWiVNw';
         const map = new mapboxgl.Map({
             container: 'map',
-            style: 'mapbox://styles/mapbox/satellite-streets-v11', //Use satellite-streets style
+            style: 'mapbox://styles/mapbox/satellite-streets-v12', //Use satellite-streets style
             center: [-3.23, 54.46], //Scarfell Pike coordinates
             zoom: 13,
             pitch: 64,
             bearing: 90
         });
+        map.getTerrain()
 
         map.on('load', () => {
             //Add 3D terrain
@@ -711,25 +712,6 @@
                 'id': 'Wolsingham_to_Tunstall_Reservoir_Circular-layer',
                 'type': 'line',
                 'source': 'Wolsingham_to_Tunstall_Reservoir_Circular',
-                'layout': {
-                    'line-join': 'round',
-                    'line-cap': 'round'
-                },
-                'paint': {
-                    'line-color': '#ff0000',
-                    'line-width': 3
-                }
-            });
-
-            // Earthmate tracks
-            map.addSource('Earthmate-Tracks', {
-                'type': 'geojson',
-                'data': 'assets/hikes/earthmate-tracks.js'
-            });
-            map.addLayer({
-                'id': 'Earthmate-Tracks-layer',
-                'type': 'line',
-                'source': 'Earthmate-Tracks',
                 'layout': {
                     'line-join': 'round',
                     'line-cap': 'round'
