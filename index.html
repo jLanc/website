@@ -93,6 +93,8 @@
         ];
 
         const images = imageFiles.map(file => `${R2_BASE}/${encodeURIComponent(file.split('/').pop())}`);
+        const slides = new Array(images.length).fill(null); // filled in as images load
+
         let currentSlide = Math.floor(Math.random() * images.length);
         const ANIMATION_DURATION = 5000; // 5 seconds
         const MAX_MOVE_PERCENT = 10;
@@ -104,6 +106,15 @@
                 img.onerror = reject;
                 img.src = src;
             });
+        }
+
+        async function loadSlide(index) {
+            const slide = await createSlide(images[index]);
+            const img = slide.querySelector('img');
+            slide.dataset.startTransform = calculateTransform(img, slideshow.clientWidth, slideshow.clientHeight);
+            slide.dataset.endTransform = calculateTransform(img, slideshow.clientWidth, slideshow.clientHeight);
+            slideshow.appendChild(slide);
+            slides[index] = slide;
         }
 
         async function createSlide(imageSrc) {
@@ -154,31 +165,39 @@
         }
 
         function showSlide(index) {
-            const slides = document.querySelectorAll('.slide');
-            slides.forEach(slide => slide.classList.remove('active'));
-            slides[index].classList.add('active');
-            applyEffect(slides[index], slides[index].dataset.startTransform, slides[index].dataset.endTransform);
+            slides.forEach(s => s && s.classList.remove('active'));
+            const slide = slides[index];
+            slide.classList.add('active');
+            applyEffect(slide, slide.dataset.startTransform, slide.dataset.endTransform);
         }
 
+
         function nextSlide() {
-            currentSlide = (currentSlide + 1) % images.length;
-            showSlide(currentSlide);
+            // display next slide only if next is loaded
+            for (let i = 1; i < images.length; i++) {
+                const idx = (currentSlide + i) % images.length;
+                if (slides[idx]) {
+                    currentSlide = idx;
+                    showSlide(idx);
+                    return;
+                }
+            }
         }
 
         async function initSlideshow() {
-            const slides = await Promise.all(images.map(createSlide));
-            const containerWidth = slideshow.clientWidth;
-            const containerHeight = slideshow.clientHeight;
-
-            slides.forEach(slide => {
-                const img = slide.querySelector('img');
-                slide.dataset.startTransform = calculateTransform(img, containerWidth, containerHeight);
-                slide.dataset.endTransform = calculateTransform(img, containerWidth, containerHeight);
-                slideshow.appendChild(slide);
-            });
-
-            showSlide(currentSlide);
+            const start = currentSlide;
+            await loadSlide(start);
+            showSlide(start);
             setInterval(nextSlide, ANIMATION_DURATION);
+
+            // load the rest sequentially in playback order so the next slide is ready
+            for (let i = 1; i < images.length; i++) {
+                try {
+                    await loadSlide((start + i) % images.length);
+                } catch (e) {
+                    console.warn('Failed to load slide', i, e);
+                }
+            }
         }
 
         initSlideshow();
