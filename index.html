@@ -68,7 +68,8 @@
 
     <script>
         const slideshow = document.getElementById('slideshow');
-        const imageFolder = 'assets/astro-images/';
+        const R2_BASE = "https://images.jakeastro.io";
+
         const imageFiles = [
             'andromeda.jpg',
             'WR-134.jpg',
@@ -90,7 +91,8 @@
             'Tail_Of_RHO.jpg',
             'NGC1365.jpg'
         ];
-        const images = imageFiles.map(file => imageFolder + file);
+
+        const images = imageFiles.map(file => `${R2_BASE}/${encodeURIComponent(file.split('/').pop())}`);
         let currentSlide = Math.floor(Math.random() * images.length);
         const ANIMATION_DURATION = 5000; // 5 seconds
         const MAX_MOVE_PERCENT = 10;
