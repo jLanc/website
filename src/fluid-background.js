@@ -11,7 +11,7 @@ const DEFAULTS = {
   splatForce: 1000,        // the 6000 default is far too energetic behind text
   velocityDissipation: 0.4,
   densityDissipation: 0.1, // lower = the initial glow lingers longer
-  simResolution: 64,       
+  simResolution: 128,       
   dyeResolution: 512,
   pressureIterations: 8,
   brightness: 0.2,
