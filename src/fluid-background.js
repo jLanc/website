@@ -62,9 +62,8 @@ function makeContainer() {
 
 /**
  * The container is pointer-events:none so links stay clickable, which means
- * the canvas never receives a mousemove of its own. Forward them.
- * The library reads offsetX/offsetY, not clientX/clientY — and since the
- * canvas fills the viewport the two are equivalent.
+ * the canvas never receives a mousemove of its own, they're forwarded
+ * The library reads offsetX/offsetY
  */
 function forwardPointer(canvas) {
   addEventListener('mousemove', (e) => {
@@ -75,7 +74,6 @@ function forwardPointer(canvas) {
   }, { passive: true });
 }
 
-/** '#1b2a6b' -> { r: 0.106, g: 0.165, b: 0.42 } */
 function hexToUnit(hex) {
   const h = hex.replace('#', '');
   return {
@@ -85,22 +83,6 @@ function hexToUnit(hex) {
   };
 }
 
-/**
- * Fade a faint, motionless glow in on load.
- *
- * Neither public splat method can do this:
- *   - multipleSplats hardcodes its force as 1000 * (Math.random() - 0.5),
- *     so the dye gets launched across the screen. No config option for it.
- *   - splatAtLocation accepts a velocity of 0, but takes a hex string, and
- *     the library's HEXtoRGB returns 0-255 values that it then multiplies
- *     by 10. Even '#010101' lands ~20x too bright and blows out to white.
- *
- * Simulation.splat() takes normalised coordinates, an explicit velocity and
- * a 0-1 colour, which is exactly right. It is `private` in the TypeScript
- * source, but that is compile-time only, so it exists at runtime. We are
- * pinned to 0.8.0, so it cannot shift under us — but this is still reaching
- * past the public API, hence the guard below.
- */
 function initialGlow(simulation, palette, options, restoreRadius) {
   const { count, frames, radius, intensity } = { ...GLOW_DEFAULTS, ...options };
 
@@ -110,7 +92,7 @@ function initialGlow(simulation, palette, options, restoreRadius) {
     return;
   }
 
-  // Positions are fixed for the whole ramp. Re-randomising every frame would
+  // positions are fixed for the whole ramp. Re-randomising every frame would
   // scatter faint dots instead of building a few coherent blobs.
   const perFrame = intensity / frames;
   const blobs = Array.from({ length: count }, (_, i) => {
@@ -126,12 +108,12 @@ function initialGlow(simulation, palette, options, restoreRadius) {
     };
   });
 
-  // A wide radius is what makes these read as a glow rather than dots.
+  // a wide radius gives glowing effect
   simulation.setConfig({ splatRadius: radius });
 
   let frame = 0;
   const tick = () => {
-    // Velocity of exactly zero: the dye is deposited and stays put.
+    // velocity of exactly zero so they don't move on page load
     blobs.forEach((b) => inner.splat(b.x, b.y, 0, 0, b.color));
 
     if (++frame < frames) requestAnimationFrame(tick);
@@ -141,14 +123,6 @@ function initialGlow(simulation, palette, options, restoreRadius) {
   tick();
 }
 
-/**
- * Start the background. Safe to call more than once — later calls return the
- * existing instance rather than stacking simulations.
- * @param {object} overrides - webgl-fluid-enhanced config keys (camelCase),
- *   plus `glow`: false to skip the opening blooms, or an object to tune
- *   { count, frames, radius, intensity }.
- * @returns {Promise<object|null>} the simulation, or null if guards said no
- */
 export async function initFluidBackground(overrides = {}) {
   if (instance) return instance;
 

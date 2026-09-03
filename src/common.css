@@ -62,7 +62,3 @@ body {
     color: #fff;
     font-family: 'Orbitron', sans-serif;
 }
-
-fluid-container canvas {
-    display: block;
-}
