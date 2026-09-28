@@ -35,6 +35,19 @@ function createGalleryItem(image) {
     return item;
 }
 
+function revealWhenReady(img) {
+    const show = () => requestAnimationFrame(() =>
+        requestAnimationFrame(() => img.classList.add('loaded'))
+    );
+
+    if (img.complete && img.naturalWidth > 0) {
+        show();
+    } else {
+        img.addEventListener('load', show, { once: true });
+        img.addEventListener('error', show, { once: true });
+    }
+}
+
 function resizeGalleryItems() {
     const items = document.querySelectorAll('.gallery-item');
     const maxHeight = Math.floor(window.innerHeight * 0.4);
@@ -50,24 +63,13 @@ function resizeGalleryItems() {
 
 window.addEventListener('DOMContentLoaded', () => {
     const gallery = document.getElementById('gallery');
+
+    // Reverse gallery items so most recent image is placed first
     galleryData.reverse();
     galleryData.forEach(image => {
         gallery.appendChild(createGalleryItem(image));
     });
     resizeGalleryItems();
 });
-
-function revealWhenReady(img) {
-    const show = () => requestAnimationFrame(() =>
-        requestAnimationFrame(() => img.classList.add('loaded'))
-    );
-
-    if (img.complete && img.naturalWidth > 0) {
-        show();
-    } else {
-        img.addEventListener('load', show, { once: true });
-        img.addEventListener('error', show, { once: true });
-    }
-}
 
 window.addEventListener('resize', resizeGalleryItems);
