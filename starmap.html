@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link rel="stylesheet" href="src/common.css">
+    <style>
+        body {
+            margin: 0;
+            overflow: auto;
+            background-color: rgb(10, 10, 10);
+        }
+
+        #fluid-container canvas {
+            display: block;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 80px auto 20px;
+            padding: 20px;
+            background-color: rgba(205, 204, 204, 0.9);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: black;
+        }
+
+        @media (min-height: 800px) {
+            main {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                margin: 0;
+            }
+        }
+
+        .profile-image {
+            float: right;
+            margin: 0 0 20px 20px;
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .telescope-mage {
+            float: right;
+            margin: 0 0 20px 20px;
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        p,
+        li {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    </style>
+
+    <!-- Mandatory when setting up Aladin Lite v3 -->
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a style="white-space: nowrap;" href="index.html">Home</a></li>
+                <li><a style="white-space: nowrap;" href="astro.html">Astro Images</a></li>
+                <li><a style="white-space: nowrap;" href="asteroids.html">Asteroids</a></li>
+                <li><a style="white-space: nowrap;" href="astro_tools.html">Astro Tools</a></li>
+                <li><a style="white-space: nowrap;" href="about.html">About Me</a></li>
+                <li><a style="white-space: nowrap;" href="hikes.html">Hikes</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <div>
+        <div id="aladin-lite-div" style="width: 100vw; height: 100vh"></div>
+        <script type="text/javascript" src="https://aladin.cds.unistra.fr/AladinLite/api/v3/latest/aladin.js"
+            charset="utf-8"></script>
+
+        <script type="text/javascript">
+            let aladin;
+            A.init.then(() => {
+                aladin = A.aladin('#aladin-lite-div', { fov: 360, projection: "AIT", cooFrame: 'equatorial', showCooGridControl: true, showSimbadPointerControl: true, showCooGrid: true });
+            });
+        </script>
+    </div>
+</body>
+
+</html>
