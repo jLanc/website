@@ -66,7 +66,31 @@
                 showProjectionControl: false,
                 showFrame: false
             });
+
+            const M51 = A.image('https://images.jakeastro.io/m51.jpg', {
+                name: 'M51',
+                imgFormat: 'jpeg',
+                wcs: {
+                    NAXIS: 2,
+                    CTYPE1: 'RA---TAN',
+                    CTYPE2: 'DEC--TAN',
+                    CRVAL1: 202.748433353, 
+                    CRVAL2: 47.0335497883,
+                    CRPIX1: 2854.3536377, 
+                    CRPIX2: 1728.72976685,
+                    CD1_1: 7.65912303502E-05, 
+                    CD1_2: 0.000204708633182, 
+                    CD2_1: -0.000204730716872, 
+                    CD2_2: 7.71919306021E-05,
+                },
+                successCallback: (ra, dec, fov, image) => {
+                    image.setOpacity(0.8);   // optional: blend with the survey behind it
+                }
+            });
+            aladin.setOverlayImageLayer(M51, 'M51');
         });
+
+
     </script>
 </body>
 
