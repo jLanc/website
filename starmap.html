@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
     <title>Star Map</title>
     <link rel="stylesheet" href="src/common.css">
     <style>
@@ -13,41 +13,19 @@
             background-color: rgb(10, 10, 10);
         }
 
-        #fluid-container canvas {
-            display: block;
-        }
-
-        main {
-            max-width: 800px;
-            margin: 80px auto 20px;
-            padding: 20px;
-            background-color: rgba(205, 204, 204, 0.9);
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            color: black;
-        }
-
-        @media (min-height: 800px) {
-            main {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                margin: 0;
-            }
-        }
-
         p,
         li {
             font-family: Arial, sans-serif;
             font-size: 16px;
             line-height: 1.6;
         }
+
+        #aladin-lite-div .aladin-location {
+            top: auto;
+            bottom: 0;
+            left: 80%;
+        }
     </style>
-
-    <!-- Mandatory when setting up Aladin Lite v3 -->
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
-
 </head>
 
 <body>
@@ -66,27 +44,31 @@
     </header>
 
 
-    <div>
-        <div id="aladin-lite-div" style="width: 100vw; height: 100vh"></div>
-        <script type="text/javascript" src="https://aladin.cds.unistra.fr/AladinLite/api/v3/latest/aladin.js"
-            charset="utf-8"></script>
+    <!-- Star Map -->
+    <div id="aladin-lite-div" style="height: 100vh"></div>
+    <script type="text/javascript" src="https://aladin.cds.unistra.fr/AladinLite/api/v3/latest/aladin.js"
+        charset="utf-8"></script>
 
-        <script type="text/javascript">
-            let aladin;
-            A.init.then(() => {
-                aladin = A.aladin('#aladin-lite-div', { 
-                    fov: 60,
-                    projection: "SIN",
-                    cooFrame: 'equatorial',
-                    survey: 'P/Mellinger/color',
-                    showFullscreenControl: "false",
-                    showLayersControl: "false",
-                    showCooGridControl: true
+    <script type="text/javascript">
+        let aladin;
+        A.init.then(() => {
+            aladin = A.aladin('#aladin-lite-div', {
+                fov: 60,
+                projection: "SIN",
+                cooFrame: 'equatorial',
+                survey: 'P/Mellinger/color',
+                showFullscreenControl: false,
+                toolbar: {
+                    position: 'bottomleft'
+                },
+                showLayersControl: true,
+                showCooGridControl: true,
+                showProjectionControl: false,
+                showCooFrame: false
 
-                 });
             });
-        </script>
-    </div>
+        });
+    </script>
 </body>
 
 </html>
