@@ -173,7 +173,7 @@ export async function initFluidBackground(overrides = {}) {
   return simulation;
 }
 
-/** Tear the background down and remove its element. */
+/* Tare the background down and remove its element. */
 export function destroyFluidBackground() {
   if (!instance) return;
   instance.stop();
