@@ -70,6 +70,9 @@
             const M51 = A.image('https://images.jakeastro.io/m51.jpg', {
                 name: 'M51',
                 imgFormat: 'jpeg',
+                // wcs data is from astrometry.net submision. 
+                // need to download wcs.fits file then parse manually by chaning file extension to .txt
+                // then search for below datapoints required
                 wcs: {
                     NAXIS: 2,
                     CTYPE1: 'RA---TAN',
@@ -84,7 +87,7 @@
                     CD2_2: 7.71919306021E-05,
                 },
                 successCallback: (ra, dec, fov, image) => {
-                    image.setOpacity(0.8);   // optional: blend with the survey behind it
+                    image.setOpacity(0.8);   
                 }
             });
             aladin.setOverlayImageLayer(M51, 'M51');
