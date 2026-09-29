@@ -1,8 +1,7 @@
 // Gallery tiles load the small thumbnails committed to this repo.
-// Clicking a tile opens the full-resolution (up to 4K) version, which is
+// Clicking a tile opens the full-resolution version which is
 // served from Cloudflare R2 so the repository stays small as more images
-// are added. Set this to your bucket's public URL or custom domain, e.g.
-//   "https://images.example.com"   or   "https://pub-<hash>.r2.dev"
+// are added
 
 const R2_BASE = "https://images.jakeastro.io";
 
