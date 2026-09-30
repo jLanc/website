@@ -60,7 +60,7 @@ A.init.then(() => {
     });
     aladin.setOverlayImageLayer(M51, 'M51');
 
-        const Tail_of_RHO = A.image('https://images.jakeastro.io/Tail_Of_RHO.jpeg', {
+        const Tail_of_RHO = A.image('https://images.jakeastro.io/Tail_Of_RHO.jpg', {
         name: 'Tail of RHO',
         imgFormat: 'jpeg',
         // wcs data is from astrometry.net submision. 
