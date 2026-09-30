@@ -2,13 +2,16 @@ let aladin;
 A.init.then(() => {
     aladin = A.aladin('#aladin-lite-div', {
         fov: 60,
-        projection: "SIN",
+        target: "17 04 10.06 -23 45 38.3",
+        projection: "STG",
         cooFrame: 'equatorial',
         survey: 'P/Mellinger/color',
         showFullscreenControl: false,
         toolbar: {
             position: 'bottomleft'
         },
+
+
         showLayersControl: true,
         showCooGridControl: true,
         showProjectionControl: false,
