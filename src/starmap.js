@@ -30,7 +30,7 @@ A.init.then(() => {
     // ***************
     // Overlay Images
     // ***************
-    /*const M51 = A.image('https://images.jakeastro.io/m51.jpeg', {
+    const M51 = A.image('https://images.jakeastro.io/m51.jpeg', {
         name: 'M51',
         imgFormat: 'jpeg',
         // wcs data is from astrometry.net submision. 
@@ -58,7 +58,7 @@ A.init.then(() => {
             image.setOpacity(1);
         }
     });
-    aladin.setOverlayImageLayer(M51, 'M51');*/
+    aladin.setOverlayImageLayer(M51, 'M51');
 
         const Tail_of_RHO = A.image('https://images.jakeastro.io/Tail_Of_RHO.jpeg', {
         name: 'Tail of RHO',
