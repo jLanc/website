@@ -75,9 +75,9 @@ A.init.then(() => {
             CRPIX1: 1343.86599223,
             // height of image here comes from the IMAGEH property returned by wcs.fits file
             CRPIX2: convertWCStoAladinCRPIX2(419.315711975,1701),
-            CD1_1: swapCDSign(3.25351360059E-05),
+            CD1_1: 3.25351360059E-05,
             CD1_2: 0.001434030750455,
-            CD2_1: swapCDSign(-0.00143217748797),
+            CD2_1: -0.00143217748797,
             CD2_2: 3.24560388415E-05,
         },
         successCallback: (ra, dec, fov, image) => {
