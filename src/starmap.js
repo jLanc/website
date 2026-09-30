@@ -15,14 +15,23 @@ A.init.then(() => {
         showFrame: false
     });
 
-    const markers = A.catalog({ name: 'My images', color: '#00ffff' });
+    const markers = A.catalog({ 
+        name: 'My images',
+        color: '#00ffff',
+        shape: "circle",
+        displayLabel: true,
+        sourceSize: "20"
+    });
     aladin.addCatalog(markers);
 
-    const M51 = A.image('https://images.jakeastro.io/m51.jpg', {
+    // ***************
+    // Overlay Images
+    // ***************
+    const M51 = A.image('https://images.jakeastro.io/m51.jpeg', {
         name: 'M51',
         imgFormat: 'jpeg',
         // wcs data is from astrometry.net submision. 
-        // need to download wcs.fits file then parse manually by chaning file extension to .txt
+        // need to download wcs.fits file then parse manually by changing file extension to .txt
         // then search for below datapoints required
         wcs: {
             NAXIS: 2,
