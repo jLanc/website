@@ -59,4 +59,34 @@ A.init.then(() => {
         }
     });
     aladin.setOverlayImageLayer(M51, 'M51');
+
+        const Tail_of_RHO = A.image('https://images.jakeastro.io/Tail_Of_RHO.jpeg', {
+        name: 'Tail of RHO',
+        imgFormat: 'jpeg',
+        // wcs data is from astrometry.net submision. 
+        // need to download wcs.fits file then parse manually by changing file extension to .txt
+        // then search for below datapoints required
+        wcs: {
+            NAXIS: 2,
+            CTYPE1: 'RA---TAN',
+            CTYPE2: 'DEC--TAN',
+            CRVAL1: 245.758918916,
+            CRVAL2: -23.9655527676,
+            CRPIX1: 1343.87533569,
+            CRPIX2: 419.327157338,
+            CD1_1: 3.24999389183E-05,
+            CD1_2: 0.00143403143725,
+            CD2_1: -0.00143216410126,
+            CD2_2: 3.24586336507E-05,
+        },
+        successCallback: (ra, dec, fov, image) => {
+            // Create a marker for an image so it can be easily seen from a distance
+            // Using aladin catalog to do it
+            markers.addSources([
+                A.marker(ra, dec, { popupTitle: 'Tail of RHO', popupDesc: 'Tail of RHO' })
+            ]);
+            image.setOpacity(1);
+        }
+    });
+    aladin.setOverlayImageLayer(Tail_of_RHO, 'Tail of RHO');
 });
