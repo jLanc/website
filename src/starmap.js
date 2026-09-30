@@ -30,7 +30,7 @@ A.init.then(() => {
     // ***************
     // Overlay Images
     // ***************
-    const M51 = A.image('https://images.jakeastro.io/m51.jpeg', {
+    /*const M51 = A.image('https://images.jakeastro.io/m51.jpeg', {
         name: 'M51',
         imgFormat: 'jpeg',
         // wcs data is from astrometry.net submision. 
@@ -58,9 +58,9 @@ A.init.then(() => {
             image.setOpacity(1);
         }
     });
-    aladin.setOverlayImageLayer(M51, 'M51');
+    aladin.setOverlayImageLayer(M51, 'M51');*/
 
-        const Tail_of_RHO = A.image('https://images.jakeastro.io/Tail_Of_RHO.jpg', {
+        const Tail_of_RHO = A.image('https://images.jakeastro.io/Tail_Of_RHO.jpeg', {
         name: 'Tail of RHO',
         imgFormat: 'jpeg',
         // wcs data is from astrometry.net submision. 
@@ -70,14 +70,15 @@ A.init.then(() => {
             NAXIS: 2,
             CTYPE1: 'RA---TAN',
             CTYPE2: 'DEC--TAN',
-            CRVAL1: 245.758918916,
-            CRVAL2: -23.9655527676,
-            CRPIX1: 1343.87533569,
-            CRPIX2: 419.327157338,
-            CD1_1: 3.24999389183E-05,
-            CD1_2: 0.00143403143725,
-            CD2_1: -0.00143216410126,
-            CD2_2: 3.24586336507E-05,
+            CRVAL1: 245.758889483,
+            CRVAL2: -23.9655442211,
+            CRPIX1: 1343.86599223,
+            // height of image here comes from the IMAGEH property returned by wcs.fits file
+            CRPIX2: convertWCStoAladinCRPIX2(419.315711975,1701),
+            CD1_1: swapCDSign(3.25351360059E-05),
+            CD1_2: 0.001434030750455,
+            CD2_1: swapCDSign(-0.00143217748797),
+            CD2_2: 3.24560388415E-05,
         },
         successCallback: (ra, dec, fov, image) => {
             // Create a marker for an image so it can be easily seen from a distance
@@ -90,3 +91,16 @@ A.init.then(() => {
     });
     aladin.setOverlayImageLayer(Tail_of_RHO, 'Tail of RHO');
 });
+
+
+// The following conversion functions are required to convert WCS to Aladin coordinates.
+// The issue is that Aladin expect .fits image format which counts pixel rows from bottom up
+// but the .jpeg's which are supplied count pixel rows from top down.
+function convertWCStoAladinCRPIX2(wcsVal, height) {
+    return height + 1 - wcsVal
+}
+
+// simple function so swapping the sign of the CDx_x value we get from wcs.fits file
+function swapCDSign(cdVal) {
+    return -cdVal
+}
