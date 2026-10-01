@@ -12,8 +12,9 @@ The website was built both as a learning task for frontend web development, and 
 + MapBox - Hiking Map
 + Aladin - Star Map
 + WebGL Fluid - Fluid simulation interactive background
-+ CloudFlare - Website Hosting
++ CloudFlare - Website Hosting & CI/CD runner on repo push to publish new website version 
 + Git LFS - Storage of thumbnail images
++ GitHub - Code Storage
 
 ### Feature Roadmap
 ---
