@@ -29,10 +29,10 @@ The website was built both as a learning task for frontend web development, and 
 | Technical Debit Cleanup 2| Use JSON for Star Map entries rather than adding code directly into html file. Create JS to parse json & construct what we need 🗓️|
 | Star Map Styling| Create CSS for star map buttons so they're less harsh to the eye 🗓️|
 | Gallery Page Modal| When an image is selected, a modal should pop up displaying the image and a description. Expansion to have on hover plate solved coordinates on second iteration 🗓️|
-| Blog Page| Similar layour to gallery but for blog posts. Posts should use a modal to overlay post contents when selected 🗓️|
+| Blog Page| Similar layer to gallery but for blog posts. Posts should use a modal to overlay post contents when selected 🗓️|
 | Star Map FOV simulator| Telescope FOV indicator with a selectable telescope setup (sct or 13028HNT) 🗓️|
 | Star Map custom horizon| Horizon overlay 🗓️|
-| Star Map Planned Targets| Overlay or FOV indicator mapping locatinos of planned imaging targets 🗓️|
+| Star Map Planned Targets| Overlay or FOV indicator mapping locations of planned imaging targets 🗓️|
 
 
 ### Workflow For Uploading New Image
@@ -40,7 +40,7 @@ The website was built both as a learning task for frontend web development, and 
 1. Download medium sized image to use as thumbnail from my AstroBin. Store in assets/astro-image-thumbnails folder
 2. Download extra large sized image to use as main gallery and home page image also from AstroBin. Store in Cloudfront R2 bucket
 3. Add entry into home page and gallery
-4. Upload extra large image to astrometry.net, download WCS coordinate.fits file from sucessful plate solve job
+4. Upload extra large image to astrometry.net, download WCS coordinate.fits file from successful plate solve job
 5. Create new entry in Star Map page
 5. rename wcs.fits to wcs.txt and pick out the image coordinate values we need for star map.
 6. Create star map entry in html file (for now - see feature list)
