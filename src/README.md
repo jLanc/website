@@ -46,8 +46,3 @@ The website was built both as a learning task for frontend web development, and 
 6. Create star map entry in html file (for now - see feature list)
 7. Test star map entry locally with full sized image in R2 bucket
 8. If all good, commit & push to live
-
-
-
-
-
