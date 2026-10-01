@@ -26,10 +26,10 @@ The website was built both as a learning task for frontend web development, and 
 | Interactive Background | 2d Fluid simulation WebGL background ✅ |
 | Star Map | Pannable night sky map with astro image overlay in correct positions 👨‍💻 |
 | Technical Debit Cleanup 1| Remove duplicate css entries 🗓️|
+| Blog Page| Similar layer to gallery but for blog posts on scientific endeavors. Posts should use a modal to overlay post contents when selected 🗓️|
 | Technical Debit Cleanup 2| Use JSON for Star Map entries rather than adding code directly into html file. Create JS to parse json & construct what we need 🗓️|
 | Star Map Styling| Create CSS for star map buttons so they're less harsh to the eye 🗓️|
 | Gallery Page Modal| When an image is selected, a modal should pop up displaying the image and a description. Expansion to have on hover plate solved coordinates on second iteration 🗓️|
-| Blog Page| Similar layer to gallery but for blog posts. Posts should use a modal to overlay post contents when selected 🗓️|
 | Star Map FOV simulator| Telescope FOV indicator with a selectable telescope setup (sct or 13028HNT) 🗓️|
 | Star Map custom horizon| Horizon overlay 🗓️|
 | Star Map Planned Targets| Overlay or FOV indicator mapping locations of planned imaging targets 🗓️|
