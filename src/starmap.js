@@ -165,6 +165,31 @@ A.init.then(() => {
         }
     });
     aladin.setOverlayImageLayer(NGC1365, 'NGC1365');
+
+    const Tadpole_Nebula = A.image('https://images.jakeastro.io/Tadpole_Nebula.jpg', {
+        name: 'Tadpole Nebula',
+        imgFormat: 'jpeg',
+        wcs: {
+            NAXIS: 2,
+            CTYPE1: 'RA---TAN',
+            CTYPE2: 'DEC--TAN',
+            CRVAL1: 80.6315365793,
+            CRVAL2: 33.3587670468,
+            CRPIX1: 1392.89859009,
+            CRPIX2: convertWCStoAladinCRPIX2(1038.20043945, 1781),
+            CD1_1: -0.000242308068456,
+            CD1_2: swapCDSign(0.000121308926644),
+            CD2_1: -0.000121181207985,
+            CD2_2: swapCDSign(-0.000242145521042),
+        },
+        successCallback: (ra, dec, fov, image) => {
+            markers.addSources([
+                A.marker(ra, dec, { popupTitle: 'Tadpole Nebula', popupDesc: 'Tadpole Nebula' })
+            ]);
+            image.setOpacity(1);
+        }
+    });
+    aladin.setOverlayImageLayer(Tadpole_Nebula, 'Tadpole Nebula');
 });
 
 
