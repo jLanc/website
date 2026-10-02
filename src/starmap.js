@@ -140,6 +140,31 @@ A.init.then(() => {
         }
     });
     aladin.setOverlayImageLayer(Sculptor_Galaxy, 'Sculptor Galaxy');
+
+    const NGC1365 = A.image('https://images.jakeastro.io/NGC1365.jpg', {
+        name: 'NGC1365',
+        imgFormat: 'jpeg',
+        wcs: {
+            NAXIS: 2,
+            CTYPE1: 'RA---TAN',
+            CTYPE2: 'DEC--TAN',
+            CRVAL1: 54.6036961049,
+            CRVAL2: -36.4276325089,
+            CRPIX1: 1879.08247884,
+            CRPIX2: convertWCStoAladinCRPIX2(1023.43623861, 1665),
+            CD1_1: 0.00045614867396,
+            CD1_2: swapCDSign(0.00137448362354),
+            CD2_1: -0.00137465780068,
+            CD2_2: swapCDSign(0.000458458507196),
+        },
+        successCallback: (ra, dec, fov, image) => {
+            markers.addSources([
+                A.marker(ra, dec, { popupTitle: 'NGC1365', popupDesc: 'NGC1365' })
+            ]);
+            image.setOpacity(1);
+        }
+    });
+    aladin.setOverlayImageLayer(NGC1365, 'NGC1365');
 });
 
 
