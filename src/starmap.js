@@ -18,7 +18,7 @@ A.init.then(() => {
         showFrame: false
     });
 
-    const markers = A.catalog({ 
+    const markers = A.catalog({
         name: 'My images',
         color: '#00ffff',
         shape: "circle",
@@ -60,7 +60,7 @@ A.init.then(() => {
     });
     aladin.setOverlayImageLayer(M51, 'M51');
 
-        const Tail_of_RHO = A.image('https://images.jakeastro.io/Tail_Of_RHO.jpeg', {
+    const Tail_of_RHO = A.image('https://images.jakeastro.io/Tail_Of_RHO.jpeg', {
         name: 'Tail of RHO',
         imgFormat: 'jpeg',
         // wcs data is from astrometry.net submision. 
@@ -90,6 +90,56 @@ A.init.then(() => {
         }
     });
     aladin.setOverlayImageLayer(Tail_of_RHO, 'Tail of RHO');
+
+    const Orion_Nebula = A.image('https://images.jakeastro.io/Orion_Nebula.jpg', {
+        name: 'Orion Nebula',
+        imgFormat: 'jpeg',
+        wcs: {
+            NAXIS: 2,
+            CTYPE1: 'RA---TAN',
+            CTYPE2: 'DEC--TAN',
+            CRVAL1: 84.2968940375,
+            CRVAL2: -5.79723083066,
+            CRPIX1: 1795.85941569,
+            CRPIX2: convertWCStoAladinCRPIX2(1155.69907633, 1811),
+            CD1_1: 0.000377004632075,
+            CD1_2: swapCDSign(0.00121229172654),
+            CD2_1: -0.00121270813927,
+            CD2_2: swapCDSign(0.000376874392791),
+        },
+        successCallback: (ra, dec, fov, image) => {
+            markers.addSources([
+                A.marker(ra, dec, { popupTitle: 'Orion Nebula', popupDesc: 'Orion Nebula' })
+            ]);
+            image.setOpacity(1);
+        }
+    });
+    aladin.setOverlayImageLayer(Orion_Nebula, 'Sculptor Galaxy');
+
+    const Sculptor_Galaxy = A.image('https://images.jakeastro.io/Sculptor_Galaxy.jpg', {
+        name: 'Sculptor Galaxy',
+        imgFormat: 'jpeg',
+        wcs: {
+            NAXIS: 2,
+            CTYPE1: 'RA---TAN',
+            CTYPE2: 'DEC--TAN',
+            CRVAL1: 11.7999198006,
+            CRVAL2: -25.419074962,
+            CRPIX1: 1880.3789978,
+            CRPIX2: convertWCStoAladinCRPIX2(899.573699951, 1717),
+            CD1_1: -0.000149371359336,
+            CD1_2: swapCDSign(0.000209196996388),
+            CD2_1: -0.00020881649716,
+            CD2_2: swapCDSign(-0.000149224473923),
+        },
+        successCallback: (ra, dec, fov, image) => {
+            markers.addSources([
+                A.marker(ra, dec, { popupTitle: 'Sculptor Galaxy', popupDesc: 'Sculptor Galaxy' })
+            ]);
+            image.setOpacity(1);
+        }
+    });
+    aladin.setOverlayImageLayer(Sculptor_Galaxy, 'Sculptor Galaxy');
 });
 
 
