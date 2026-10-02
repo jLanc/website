@@ -126,6 +126,7 @@
             return slide;
         }
 
+        // Investigate using object-fit:cover instead
         function calculateMinScale(img, containerWidth, containerHeight) {
             const imageAspect = img.naturalWidth / img.naturalHeight;
             const containerAspect = containerWidth / containerHeight;
