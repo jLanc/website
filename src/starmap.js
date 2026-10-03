@@ -276,7 +276,7 @@ A.init.then(() => {
             CRVAL1: 84.9159837519,
             CRVAL2: -2.70371636125,
             CRPIX1: 1359.08266195,
-            CRPIX2: convertWCStoAladinCRPIX2(484.560175578, 1811),
+            CRPIX2: convertWCStoAladinCRPIX2(484.560175578, 1868),
             CD1_1: 0.000426413162502,
             CD1_2: swapCDSign(0.00100021699462),
             CD2_1: -0.00100019790719,
@@ -290,6 +290,31 @@ A.init.then(() => {
         }
     });
     aladin.setOverlayImageLayer(Horsehead_Nebula, 'Horsehead Nebula');
+
+    const Carina_Nebula = A.image('https://images.jakeastro.io/carinaSHOcity.jpg', {
+        name: 'Carina Nebula',
+        imgFormat: 'jpeg',
+        wcs: {
+            NAXIS: 2,
+            CTYPE1: 'RA---TAN',
+            CTYPE2: 'DEC--TAN',
+            CRVAL1: 160.341078706,
+            CRVAL2: -60.735042197,
+            CRPIX1: 1018.27912903,
+            CRPIX2: convertWCStoAladinCRPIX2(29.944290161, 1667),
+            CD1_1: 0.00133373167053,
+            CD1_2: swapCDSign(-0.000512781437316),
+            CD2_1: 0.000511740638441,
+            CD2_2: swapCDSign(0.00133482037829),
+        },
+        successCallback: (ra, dec, fov, image) => {
+            markers.addSources([
+                A.marker(ra, dec, { popupTitle: 'Carina Nebula' })
+            ]);
+            image.setOpacity(1);
+        }
+    });
+    aladin.setOverlayImageLayer(Carina_Nebula, 'Carina Nebula');
 
 });
 
