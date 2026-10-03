@@ -40,8 +40,8 @@ A.init.then(() => {
             NAXIS: 2,
             CTYPE1: 'RA---TAN',
             CTYPE2: 'DEC--TAN',
-            CRVAL1: 202.748475904,
-            CRVAL2: 47.0335854634,
+            CRVAL1: 202.748475904,  // RA point of reference
+            CRVAL2: 47.0335854634,  // DEC point of reference
             CRPIX1: 1903.05758667,
             CRPIX2: convertWCStoAladinCRPIX2(1152.73989868, 1600),
             CD1_1: 0.000114839718337,
@@ -84,7 +84,7 @@ A.init.then(() => {
             // Create a marker for an image so it can be easily seen from a distance
             // Using aladin catalog to do it
             markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'Tail of RHO'})
+                A.marker(ra, dec, { popupTitle: 'Tail of RHO' })
             ]);
             image.setOpacity(1);
         }
@@ -109,7 +109,7 @@ A.init.then(() => {
         },
         successCallback: (ra, dec, fov, image) => {
             markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'Sculptor Galaxy'})
+                A.marker(ra, dec, { popupTitle: 'Sculptor Galaxy' })
             ]);
             image.setOpacity(1);
         }
@@ -134,7 +134,7 @@ A.init.then(() => {
         },
         successCallback: (ra, dec, fov, image) => {
             markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'NGC1365'})
+                A.marker(ra, dec, { popupTitle: 'NGC1365' })
             ]);
             image.setOpacity(1);
         }
@@ -159,7 +159,7 @@ A.init.then(() => {
         },
         successCallback: (ra, dec, fov, image) => {
             markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'Tadpole Nebula'})
+                A.marker(ra, dec, { popupTitle: 'Tadpole Nebula' })
             ]);
             image.setOpacity(1);
         }
@@ -184,7 +184,7 @@ A.init.then(() => {
         },
         successCallback: (ra, dec, fov, image) => {
             markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'Centaurus A'})
+                A.marker(ra, dec, { popupTitle: 'Centaurus A' })
             ]);
             image.setOpacity(1);
         }
@@ -209,7 +209,7 @@ A.init.then(() => {
         },
         successCallback: (ra, dec, fov, image) => {
             markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'Witch Head Nebula'})
+                A.marker(ra, dec, { popupTitle: 'Witch Head Nebula' })
             ]);
             image.setOpacity(1);
         }
@@ -234,7 +234,7 @@ A.init.then(() => {
         },
         successCallback: (ra, dec, fov, image) => {
             markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'Anteater Nebula'})
+                A.marker(ra, dec, { popupTitle: 'Anteater Nebula' })
             ]);
             image.setOpacity(1);
         }
@@ -259,12 +259,37 @@ A.init.then(() => {
         },
         successCallback: (ra, dec, fov, image) => {
             markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'Orion Nebula'})
+                A.marker(ra, dec, { popupTitle: 'Orion Nebula' })
             ]);
             image.setOpacity(1);
         }
     });
     aladin.setOverlayImageLayer(Orion_Nebula, 'Orion Nebula');
+
+    const Horsehead_Nebula = A.image('https://images.jakeastro.io/horsehead_nebula.jpg', {
+        name: 'Horsehead Nebula',
+        imgFormat: 'jpeg',
+        wcs: {
+            NAXIS: 2,
+            CTYPE1: 'RA---TAN',
+            CTYPE2: 'DEC--TAN',
+            CRVAL1: 84.9159837519,
+            CRVAL2: -2.70371636125,
+            CRPIX1: 1359.08266195,
+            CRPIX2: convertWCStoAladinCRPIX2(484.560175578, 1811),
+            CD1_1: 0.000426413162502,
+            CD1_2: swapCDSign(0.00100021699462),
+            CD2_1: -0.00100019790719,
+            CD2_2: swapCDSign(0.000426779974677),
+        },
+        successCallback: (ra, dec, fov, image) => {
+            markers.addSources([
+                A.marker(ra, dec, { popupTitle: 'Horsehead Nebula' })
+            ]);
+            image.setOpacity(1);
+        }
+    });
+    aladin.setOverlayImageLayer(Horsehead_Nebula, 'Horsehead Nebula');
 
 });
 
