@@ -240,6 +240,56 @@ A.init.then(() => {
         }
     });
     aladin.setOverlayImageLayer(Witch_Head, 'Witch Head Nebula');
+
+    const Anteater_Nebula = A.image('https://images.jakeastro.io/Anteater_Nebula.jpg', {
+        name: 'Anteater_Nebula',
+        imgFormat: 'jpeg',
+        wcs: {
+            NAXIS: 2,
+            CTYPE1: 'RA---TAN',
+            CTYPE2: 'DEC--TAN',
+            CRVAL1: 285.99850158,
+            CRVAL2: -37.3318483589,
+            CRPIX1: 2544.26786296,
+            CRPIX2: convertWCStoAladinCRPIX2(3354.11604818, 5134),
+            CD1_1: -0.000296483602066,
+            CD1_2: swapCDSign(-4.0998033356E-05),
+            CD2_1: 4.09980906266E-05,
+            CD2_2: swapCDSign(-0.000295789980018),
+        },
+        successCallback: (ra, dec, fov, image) => {
+            markers.addSources([
+                A.marker(ra, dec, { popupTitle: 'Anteater Nebula', popupDesc: 'Anteater Nebula' })
+            ]);
+            image.setOpacity(1);
+        }
+    });
+    aladin.setOverlayImageLayer(Anteater_Nebula, 'Anteater Nebula');
+
+        const Anteater_Nebula = A.image('https://images.jakeastro.io/Anteater_Nebula.jpg', {
+        name: 'Anteater_Nebula',
+        imgFormat: 'jpeg',
+        wcs: {
+            NAXIS: 2,
+            CTYPE1: 'RA---TAN',
+            CTYPE2: 'DEC--TAN',
+            CRVAL1: 285.99850158,
+            CRVAL2: -37.3318483589,
+            CRPIX1: 2544.26786296,
+            CRPIX2: convertWCStoAladinCRPIX2(3354.11604818, 5134),
+            CD1_1: -0.000296483602066,
+            CD1_2: swapCDSign(-4.0998033356E-05),
+            CD2_1: 4.09980906266E-05,
+            CD2_2: swapCDSign(-0.000295789980018),
+        },
+        successCallback: (ra, dec, fov, image) => {
+            markers.addSources([
+                A.marker(ra, dec, { popupTitle: 'Anteater Nebula', popupDesc: 'Anteater Nebula' })
+            ]);
+            image.setOpacity(1);
+        }
+    });
+    aladin.setOverlayImageLayer(Anteater_Nebula, 'Anteater Nebula');
 });
 
 
