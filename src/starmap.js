@@ -91,31 +91,6 @@ A.init.then(() => {
     });
     aladin.setOverlayImageLayer(Tail_of_RHO, 'Tail of RHO');
 
-    const Orion_Nebula = A.image('https://images.jakeastro.io/Orion_Nebula.jpg', {
-        name: 'Orion Nebula',
-        imgFormat: 'jpeg',
-        wcs: {
-            NAXIS: 2,
-            CTYPE1: 'RA---TAN',
-            CTYPE2: 'DEC--TAN',
-            CRVAL1: 84.2968940375,
-            CRVAL2: -5.79723083066,
-            CRPIX1: 1795.85941569,
-            CRPIX2: convertWCStoAladinCRPIX2(1155.69907633, 1811),
-            CD1_1: 0.000377004632075,
-            CD1_2: swapCDSign(0.00121229172654),
-            CD2_1: -0.00121270813927,
-            CD2_2: swapCDSign(0.000376874392791),
-        },
-        successCallback: (ra, dec, fov, image) => {
-            markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'Orion Nebula', popupDesc: 'Orion Nebula' })
-            ]);
-            image.setOpacity(1);
-        }
-    });
-    aladin.setOverlayImageLayer(Orion_Nebula, 'Sculptor Galaxy');
-
     const Sculptor_Galaxy = A.image('https://images.jakeastro.io/Sculptor_Galaxy.jpg', {
         name: 'Sculptor Galaxy',
         imgFormat: 'jpeg',
@@ -266,30 +241,31 @@ A.init.then(() => {
     });
     aladin.setOverlayImageLayer(Anteater_Nebula, 'Anteater Nebula');
 
-        const Anteater_Nebula = A.image('https://images.jakeastro.io/Anteater_Nebula.jpg', {
-        name: 'Anteater_Nebula',
+    const Orion_Nebula = A.image('https://images.jakeastro.io/Orion_Nebula.jpg', {
+        name: 'Orion Nebula',
         imgFormat: 'jpeg',
         wcs: {
             NAXIS: 2,
             CTYPE1: 'RA---TAN',
             CTYPE2: 'DEC--TAN',
-            CRVAL1: 285.99850158,
-            CRVAL2: -37.3318483589,
-            CRPIX1: 2544.26786296,
-            CRPIX2: convertWCStoAladinCRPIX2(3354.11604818, 5134),
-            CD1_1: -0.000296483602066,
-            CD1_2: swapCDSign(-4.0998033356E-05),
-            CD2_1: 4.09980906266E-05,
-            CD2_2: swapCDSign(-0.000295789980018),
+            CRVAL1: 84.2968940375,
+            CRVAL2: -5.79723083066,
+            CRPIX1: 1795.85941569,
+            CRPIX2: convertWCStoAladinCRPIX2(1155.69907633, 1811),
+            CD1_1: 0.000377004632075,
+            CD1_2: swapCDSign(0.00121229172654),
+            CD2_1: -0.00121270813927,
+            CD2_2: swapCDSign(0.000376874392791),
         },
         successCallback: (ra, dec, fov, image) => {
             markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'Anteater Nebula', popupDesc: 'Anteater Nebula' })
+                A.marker(ra, dec, { popupTitle: 'Orion Nebula', popupDesc: 'Orion Nebula' })
             ]);
             image.setOpacity(1);
         }
     });
-    aladin.setOverlayImageLayer(Anteater_Nebula, 'Anteater Nebula');
+    aladin.setOverlayImageLayer(Orion_Nebula, 'Sculptor Galaxy');
+
 });
 
 
