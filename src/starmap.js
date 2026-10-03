@@ -84,7 +84,7 @@ A.init.then(() => {
             // Create a marker for an image so it can be easily seen from a distance
             // Using aladin catalog to do it
             markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'Tail of RHO', popupDesc: 'Tail of RHO' })
+                A.marker(ra, dec, { popupTitle: 'Tail of RHO'})
             ]);
             image.setOpacity(1);
         }
@@ -109,7 +109,7 @@ A.init.then(() => {
         },
         successCallback: (ra, dec, fov, image) => {
             markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'Sculptor Galaxy', popupDesc: 'Sculptor Galaxy' })
+                A.marker(ra, dec, { popupTitle: 'Sculptor Galaxy'})
             ]);
             image.setOpacity(1);
         }
@@ -134,7 +134,7 @@ A.init.then(() => {
         },
         successCallback: (ra, dec, fov, image) => {
             markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'NGC1365', popupDesc: 'NGC1365' })
+                A.marker(ra, dec, { popupTitle: 'NGC1365'})
             ]);
             image.setOpacity(1);
         }
@@ -159,7 +159,7 @@ A.init.then(() => {
         },
         successCallback: (ra, dec, fov, image) => {
             markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'Tadpole Nebula', popupDesc: 'Tadpole Nebula' })
+                A.marker(ra, dec, { popupTitle: 'Tadpole Nebula'})
             ]);
             image.setOpacity(1);
         }
@@ -184,7 +184,7 @@ A.init.then(() => {
         },
         successCallback: (ra, dec, fov, image) => {
             markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'Centaurus A', popupDesc: 'Centaurus A' })
+                A.marker(ra, dec, { popupTitle: 'Centaurus A'})
             ]);
             image.setOpacity(1);
         }
@@ -209,7 +209,7 @@ A.init.then(() => {
         },
         successCallback: (ra, dec, fov, image) => {
             markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'Witch Head Nebula', popupDesc: 'Witch Head Nebula' })
+                A.marker(ra, dec, { popupTitle: 'Witch Head Nebula'})
             ]);
             image.setOpacity(1);
         }
@@ -234,7 +234,7 @@ A.init.then(() => {
         },
         successCallback: (ra, dec, fov, image) => {
             markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'Anteater Nebula', popupDesc: 'Anteater Nebula' })
+                A.marker(ra, dec, { popupTitle: 'Anteater Nebula'})
             ]);
             image.setOpacity(1);
         }
@@ -259,7 +259,7 @@ A.init.then(() => {
         },
         successCallback: (ra, dec, fov, image) => {
             markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'Orion Nebula', popupDesc: 'Orion Nebula' })
+                A.marker(ra, dec, { popupTitle: 'Orion Nebula'})
             ]);
             image.setOpacity(1);
         }
