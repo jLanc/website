@@ -215,6 +215,31 @@ A.init.then(() => {
         }
     });
     aladin.setOverlayImageLayer(Centaurus_A, 'Centaurus A');
+
+    const Witch_Head = A.image('https://images.jakeastro.io/IC2118.jpg', {
+        name: 'Witch_Head',
+        imgFormat: 'jpeg',
+        wcs: {
+            NAXIS: 2,
+            CTYPE1: 'RA---TAN',
+            CTYPE2: 'DEC--TAN',
+            CRVAL1: 76.5755416142,
+            CRVAL2: -8.19899915396,
+            CRPIX1: 2023.21207682,
+            CRPIX2: convertWCStoAladinCRPIX2(1011.91623942, 1697),
+            CD1_1: -6.60935482733E-05,
+            CD1_2: swapCDSign(0.00132272638655),
+            CD2_1: -0.0013224311271,
+            CD2_2: swapCDSign(-6.6031917906E-05),
+        },
+        successCallback: (ra, dec, fov, image) => {
+            markers.addSources([
+                A.marker(ra, dec, { popupTitle: 'Witch Head Nebula', popupDesc: 'Witch Head Nebula' })
+            ]);
+            image.setOpacity(1);
+        }
+    });
+    aladin.setOverlayImageLayer(Witch_Head, 'Witch Head Nebula');
 });
 
 
