@@ -264,7 +264,7 @@ A.init.then(() => {
             image.setOpacity(1);
         }
     });
-    aladin.setOverlayImageLayer(Orion_Nebula, 'Sculptor Galaxy');
+    aladin.setOverlayImageLayer(Orion_Nebula, 'Orion Nebula');
 
 });
 
