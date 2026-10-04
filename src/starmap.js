@@ -440,6 +440,31 @@ A.init.then(() => {
         }
     });
     aladin.setOverlayImageLayer(Bodes_Galaxy, 'Bode\'s Galaxy - M81');
+
+    const WR_134 = A.image('https://images.jakeastro.io/WR-134.jpg', {
+        name: 'Supernova remnant WR-134',
+        imgFormat: 'jpeg',
+        wcs: {
+            NAXIS: 2,
+            CTYPE1: 'RA---TAN',
+            CTYPE2: 'DEC--TAN',
+            CRVAL1: 302.616174513,
+            CRVAL2: 36.119000243,
+            CRPIX1: 1255.14363098,
+            CRPIX2: convertWCStoAladinCRPIX2(1304.9209137, 1789),
+            CD1_1: -0.000370761471732,
+            CD1_2: swapCDSign(0.000172367901454),
+            CD2_1: -0.000172352289996,
+            CD2_2: swapCDSign(-0.000370914318189),
+        },
+        successCallback: (ra, dec, fov, image) => {
+            markers.addSources([
+                A.marker(ra, dec, { popupTitle: 'Supernova remnant WR-134' })
+            ]);
+            image.setOpacity(1);
+        }
+    });
+    aladin.setOverlayImageLayer(WR_134, 'Supernova remnant WR-134');
 });
 
 
