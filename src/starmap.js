@@ -31,7 +31,7 @@ A.init.then(() => {
     // Overlay Images
     // ***************
     const M51 = A.image('https://images.jakeastro.io/m51.jpeg', {
-        name: 'M51',
+        name: 'Whirlpool Galaxy - M51',
         imgFormat: 'jpeg',
         // wcs data is from astrometry.net submision. 
         // need to download wcs.fits file then parse manually by changing file extension to .txt
@@ -53,15 +53,15 @@ A.init.then(() => {
             // Create a marker for an image so it can be easily seen from a distance
             // Using aladin catalog to do it
             markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'M51', popupDesc: 'Whirlpool Galaxy' })
+                A.marker(ra, dec, { popupTitle: 'Whirlpool Galaxy - M51' })
             ]);
             image.setOpacity(1);
         }
     });
-    aladin.setOverlayImageLayer(M51, 'M51');
+    aladin.setOverlayImageLayer(M51, 'Whirlpool Galaxy - M51');
 
     const Tail_of_RHO = A.image('https://images.jakeastro.io/Tail_Of_RHO.jpeg', {
-        name: 'Tail of RHO',
+        name: 'Tail of RHO - IC4604',
         imgFormat: 'jpeg',
         // wcs data is from astrometry.net submision. 
         // need to download wcs.fits file then parse manually by changing file extension to .txt
@@ -84,15 +84,15 @@ A.init.then(() => {
             // Create a marker for an image so it can be easily seen from a distance
             // Using aladin catalog to do it
             markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'Tail of RHO' })
+                A.marker(ra, dec, { popupTitle: 'Tail of RHO - IC4604' })
             ]);
             image.setOpacity(1);
         }
     });
-    aladin.setOverlayImageLayer(Tail_of_RHO, 'Tail of RHO');
+    aladin.setOverlayImageLayer(Tail_of_RHO, 'Tail of RHO - IC4604');
 
     const Sculptor_Galaxy = A.image('https://images.jakeastro.io/Sculptor_Galaxy.jpg', {
-        name: 'Sculptor Galaxy',
+        name: 'Sculptor Galaxy - NGC253',
         imgFormat: 'jpeg',
         wcs: {
             NAXIS: 2,
@@ -109,12 +109,12 @@ A.init.then(() => {
         },
         successCallback: (ra, dec, fov, image) => {
             markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'Sculptor Galaxy' })
+                A.marker(ra, dec, { popupTitle: 'Sculptor Galaxy - NGC253' })
             ]);
             image.setOpacity(1);
         }
     });
-    aladin.setOverlayImageLayer(Sculptor_Galaxy, 'Sculptor Galaxy');
+    aladin.setOverlayImageLayer(Sculptor_Galaxy, 'Sculptor Galaxy - NGC253');
 
     const NGC1365 = A.image('https://images.jakeastro.io/NGC1365.jpg', {
         name: 'NGC1365',
@@ -142,7 +142,7 @@ A.init.then(() => {
     aladin.setOverlayImageLayer(NGC1365, 'NGC1365');
 
     const Tadpole_Nebula = A.image('https://images.jakeastro.io/Tadpole_Nebula.jpg', {
-        name: 'Tadpole Nebula',
+        name: 'Tadpole Nebula - NGC1893',
         imgFormat: 'jpeg',
         wcs: {
             NAXIS: 2,
@@ -159,15 +159,15 @@ A.init.then(() => {
         },
         successCallback: (ra, dec, fov, image) => {
             markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'Tadpole Nebula' })
+                A.marker(ra, dec, { popupTitle: 'Tadpole Nebula - NGC1893' })
             ]);
             image.setOpacity(1);
         }
     });
-    aladin.setOverlayImageLayer(Tadpole_Nebula, 'Tadpole Nebula');
+    aladin.setOverlayImageLayer(Tadpole_Nebula, 'Tadpole Nebula - NGC1893');
 
     const Centaurus_A = A.image('https://images.jakeastro.io/Centaurus_A.jpg', {
-        name: 'Centaurus A',
+        name: 'Centaurus A - NGC5128',
         imgFormat: 'jpeg',
         wcs: {
             NAXIS: 2,
@@ -184,15 +184,15 @@ A.init.then(() => {
         },
         successCallback: (ra, dec, fov, image) => {
             markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'Centaurus A' })
+                A.marker(ra, dec, { popupTitle: 'Centaurus A - NGC5128' })
             ]);
             image.setOpacity(1);
         }
     });
-    aladin.setOverlayImageLayer(Centaurus_A, 'Centaurus A');
+    aladin.setOverlayImageLayer(Centaurus_A, 'Centaurus A - NGC5128');
 
     const Witch_Head = A.image('https://images.jakeastro.io/IC2118.jpg', {
-        name: 'Witch_Head',
+        name: 'Witch\'s Head - IC2118',
         imgFormat: 'jpeg',
         wcs: {
             NAXIS: 2,
@@ -209,15 +209,15 @@ A.init.then(() => {
         },
         successCallback: (ra, dec, fov, image) => {
             markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'Witch Head Nebula' })
+                A.marker(ra, dec, { popupTitle: 'Witch\'s Head - IC2118' })
             ]);
             image.setOpacity(1);
         }
     });
-    aladin.setOverlayImageLayer(Witch_Head, 'Witch Head Nebula');
+    aladin.setOverlayImageLayer(Witch_Head, 'Witch\'s Head - IC2118');
 
     const Anteater_Nebula = A.image('https://images.jakeastro.io/Anteater_Nebula.jpg', {
-        name: 'Anteater_Nebula',
+        name: 'Anteater_Nebula - NGC6726',
         imgFormat: 'jpeg',
         wcs: {
             NAXIS: 2,
@@ -234,15 +234,15 @@ A.init.then(() => {
         },
         successCallback: (ra, dec, fov, image) => {
             markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'Anteater Nebula' })
+                A.marker(ra, dec, { popupTitle: 'Anteater_Nebula - NGC6726' })
             ]);
             image.setOpacity(1);
         }
     });
-    aladin.setOverlayImageLayer(Anteater_Nebula, 'Anteater Nebula');
+    aladin.setOverlayImageLayer(Anteater_Nebula, 'Anteater Nebula - NGC6726');
 
     const Orion_Nebula = A.image('https://images.jakeastro.io/Orion_Nebula.jpg', {
-        name: 'Orion Nebula',
+        name: 'Orion Nebula - NGC1976',
         imgFormat: 'jpeg',
         wcs: {
             NAXIS: 2,
@@ -259,15 +259,15 @@ A.init.then(() => {
         },
         successCallback: (ra, dec, fov, image) => {
             markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'Orion Nebula' })
+                A.marker(ra, dec, { popupTitle: 'Orion Nebula - NGC1976' })
             ]);
             image.setOpacity(1);
         }
     });
-    aladin.setOverlayImageLayer(Orion_Nebula, 'Orion Nebula');
+    aladin.setOverlayImageLayer(Orion_Nebula, 'Orion Nebula - NGC1976');
 
     const Horsehead_Nebula = A.image('https://images.jakeastro.io/horsehead_nebula.jpg', {
-        name: 'Horsehead Nebula',
+        name: 'Horsehead Nebula - IC434',
         imgFormat: 'jpeg',
         wcs: {
             NAXIS: 2,
@@ -284,15 +284,15 @@ A.init.then(() => {
         },
         successCallback: (ra, dec, fov, image) => {
             markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'Horsehead Nebula' })
+                A.marker(ra, dec, { popupTitle: 'Horsehead Nebula - IC434' })
             ]);
             image.setOpacity(1);
         }
     });
-    aladin.setOverlayImageLayer(Horsehead_Nebula, 'Horsehead Nebula');
+    aladin.setOverlayImageLayer(Horsehead_Nebula, 'Horsehead Nebula - IC434');
 
     const Carina_Nebula = A.image('https://images.jakeastro.io/carinaSHOcity.jpg', {
-        name: 'Carina Nebula',
+        name: 'Carina Nebula - NGC3372',
         imgFormat: 'jpeg',
         wcs: {
             NAXIS: 2,
@@ -309,15 +309,15 @@ A.init.then(() => {
         },
         successCallback: (ra, dec, fov, image) => {
             markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'Carina Nebula' })
+                A.marker(ra, dec, { popupTitle: 'Carina Nebula - NGC3372' })
             ]);
             image.setOpacity(1);
         }
     });
-    aladin.setOverlayImageLayer(Carina_Nebula, 'Carina Nebula');
+    aladin.setOverlayImageLayer(Carina_Nebula, 'Carina Nebula - NGC3372');
 
     const NGC5139 = A.image('https://images.jakeastro.io/NGC5139.jpg', {
-        name: 'NGC5139 Globular Cluster',
+        name: 'Globular Cluster NGC5139',
         imgFormat: 'jpeg',
         wcs: {
             NAXIS: 2,
@@ -334,15 +334,15 @@ A.init.then(() => {
         },
         successCallback: (ra, dec, fov, image) => {
             markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'NGC5139 Globular Cluster' })
+                A.marker(ra, dec, { popupTitle: 'Globular Cluster NGC5139' })
             ]);
             image.setOpacity(1);
         }
     });
-    aladin.setOverlayImageLayer(NGC5139, 'NGC5139 Globular Cluster');
+    aladin.setOverlayImageLayer(NGC5139, 'Globular Cluster NGC5139');
 
     const Iris_Nebula = A.image('https://images.jakeastro.io/iris.jpeg', {
-        name: 'NGC7023 - The Iris Nebula',
+        name: 'Iris Nebula - NGC7023',
         imgFormat: 'jpeg',
         wcs: {
             NAXIS: 2,
@@ -359,15 +359,15 @@ A.init.then(() => {
         },
         successCallback: (ra, dec, fov, image) => {
             markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'NGC7023 - The Iris Nebula' })
+                A.marker(ra, dec, { popupTitle: 'Iris Nebula - NGC7023' })
             ]);
             image.setOpacity(1);
         }
     });
-    aladin.setOverlayImageLayer(Iris_Nebula, 'NGC7023 - The Iris Nebula');
+    aladin.setOverlayImageLayer(Iris_Nebula, 'Iris Nebula - NGC7023');
 
     const Crab_Nebula = A.image('https://images.jakeastro.io/m1.jpg', {
-        name: 'M1 - Crab Nebula',
+        name: 'Crab Nebula - M1',
         imgFormat: 'jpeg',
         wcs: {
             NAXIS: 2,
@@ -384,14 +384,62 @@ A.init.then(() => {
         },
         successCallback: (ra, dec, fov, image) => {
             markers.addSources([
-                A.marker(ra, dec, { popupTitle: 'M1 - Crab Nebula' })
+                A.marker(ra, dec, { popupTitle: 'Crab Nebula - M1' })
             ]);
             image.setOpacity(1);
         }
     });
-    aladin.setOverlayImageLayer(Iris_Nebula, 'M1 - Crab Nebula');
-    
+    aladin.setOverlayImageLayer(Iris_Nebula, 'Crab Nebula - M1');
 
+    const Veil_Nebula = A.image('https://images.jakeastro.io/veil.jpg', {
+        name: 'Veil Nebula - NGC6960',
+        imgFormat: 'jpeg',
+        wcs: {
+            NAXIS: 2,
+            CTYPE1: 'RA---TAN',
+            CTYPE2: 'DEC--TAN',
+            CRVAL1: 311.447255488,
+            CRVAL2: 30.7811756101,
+            CRPIX1: 1372.7996521,
+            CRPIX2: convertWCStoAladinCRPIX2(837.680267334, 1771),
+            CD1_1: 0.000128624194075,
+            CD1_2: swapCDSign(0.000368163406287),
+            CD2_1: -0.000367865953458,
+            CD2_2: swapCDSign(0.000128410411368),
+        },
+        successCallback: (ra, dec, fov, image) => {
+            markers.addSources([
+                A.marker(ra, dec, { popupTitle: 'Veil Nebula - NGC6960' })
+            ]);
+            image.setOpacity(1);
+        }
+    });
+    aladin.setOverlayImageLayer(Veil_Nebula, 'Veil Nebula - NGC6960');
+
+    const Bodes_Galaxy = A.image('https://images.jakeastro.io/m81.jpg', {
+        name: 'Bode\'s Galaxy - M81',
+        imgFormat: 'jpeg',
+        wcs: {
+            NAXIS: 2,
+            CTYPE1: 'RA---TAN',
+            CTYPE2: 'DEC--TAN',
+            CRVAL1: 148.740351955,
+            CRVAL2: 69.075480912,
+            CRPIX1: 1169.64736938,
+            CRPIX2: convertWCStoAladinCRPIX2(873.078323364, 1889),
+            CD1_1: 0.000256165968618,
+            CD1_2: swapCDSign(0.000219208285645),
+            CD2_1: -0.000219263240637,
+            CD2_2: swapCDSign(0.000256541289583),
+        },
+        successCallback: (ra, dec, fov, image) => {
+            markers.addSources([
+                A.marker(ra, dec, { popupTitle: 'Bode\'s Galaxy - M81' })
+            ]);
+            image.setOpacity(1);
+        }
+    });
+    aladin.setOverlayImageLayer(Bodes_Galaxy, 'Bode\'s Galaxy - M81');
 });
 
 
