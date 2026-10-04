@@ -301,7 +301,7 @@ A.init.then(() => {
             CRVAL1: 160.341078706,
             CRVAL2: -60.735042197,
             CRPIX1: 1018.27912903,
-            CRPIX2: convertWCStoAladinCRPIX2(29.944290161, 1667),
+            CRPIX2: convertWCStoAladinCRPIX2(429.944290161, 1667),
             CD1_1: 0.00133373167053,
             CD1_2: swapCDSign(-0.000512781437316),
             CD2_1: 0.000511740638441,
@@ -315,6 +315,56 @@ A.init.then(() => {
         }
     });
     aladin.setOverlayImageLayer(Carina_Nebula, 'Carina Nebula');
+
+    const NGC5139 = A.image('https://images.jakeastro.io/NGC5139.jpg', {
+        name: 'NGC5139 Globular Cluster',
+        imgFormat: 'jpeg',
+        wcs: {
+            NAXIS: 2,
+            CTYPE1: 'RA---TAN',
+            CTYPE2: 'DEC--TAN',
+            CRVAL1: 200.255875997,
+            CRVAL2: -46.5981008637,
+            CRPIX1: 4917.77502441,
+            CRPIX2: convertWCStoAladinCRPIX2(2377.04794312, 3613),
+            CD1_1: -0.000322532561609,
+            CD1_2: swapCDSign(-0.000502274940284),
+            CD2_1: 0.000502248935089,
+            CD2_2: swapCDSign(-0.000323471555397),
+        },
+        successCallback: (ra, dec, fov, image) => {
+            markers.addSources([
+                A.marker(ra, dec, { popupTitle: 'NGC5139 Globular Cluster' })
+            ]);
+            image.setOpacity(1);
+        }
+    });
+    aladin.setOverlayImageLayer(NGC5139, 'NGC5139 Globular Cluster');
+
+        const Iris_Nebula = A.image('https://images.jakeastro.io/iris.jpeg', {
+        name: 'NGC7023 - The Iris Nebula',
+        imgFormat: 'jpeg',
+        wcs: {
+            NAXIS: 2,
+            CTYPE1: 'RA---TAN',
+            CTYPE2: 'DEC--TAN',
+            CRVAL1: 315.515372,
+            CRVAL2: 68.4210726724,
+            CRPIX1: 692.056152344,
+            CRPIX2: convertWCStoAladinCRPIX2(13.083106995, 1836),
+            CD1_1: -0.00023253126547,
+            CD1_2: swapCDSign(0.000308715359157),
+            CD2_1: -0.000308488622039,
+            CD2_2: swapCDSign(-0.000232431935716),
+        },
+        successCallback: (ra, dec, fov, image) => {
+            markers.addSources([
+                A.marker(ra, dec, { popupTitle: 'NGC7023 - The Iris Nebula' })
+            ]);
+            image.setOpacity(1);
+        }
+    });
+    aladin.setOverlayImageLayer(Iris_Nebula, 'NGC7023 - The Iris Nebula');
 
 });
 
