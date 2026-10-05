@@ -63,9 +63,6 @@ A.init.then(() => {
     const Tail_of_RHO = A.image('https://images.jakeastro.io/Tail_Of_RHO.jpeg', {
         name: 'Tail of RHO - IC4604',
         imgFormat: 'jpeg',
-        // wcs data is from astrometry.net submision. 
-        // need to download wcs.fits file then parse manually by changing file extension to .txt
-        // then search for below datapoints required
         wcs: {
             NAXIS: 2,
             CTYPE1: 'RA---TAN',
@@ -73,7 +70,6 @@ A.init.then(() => {
             CRVAL1: 245.758889483,
             CRVAL2: -23.9655442211,
             CRPIX1: 1343.86599223,
-            // height of image here comes from the IMAGEH property returned by wcs.fits file
             CRPIX2: convertWCStoAladinCRPIX2(419.315711975, 1701),
             CD1_1: 3.25351360059E-05,
             CD1_2: swapCDSign(0.001434030750455),
@@ -81,8 +77,6 @@ A.init.then(() => {
             CD2_2: swapCDSign(3.24560388415E-05),
         },
         successCallback: (ra, dec, fov, image) => {
-            // Create a marker for an image so it can be easily seen from a distance
-            // Using aladin catalog to do it
             markers.addSources([
                 A.marker(ra, dec, { popupTitle: 'Tail of RHO - IC4604' })
             ]);
@@ -465,6 +459,56 @@ A.init.then(() => {
         }
     });
     aladin.setOverlayImageLayer(WR_134, 'Supernova remnant WR-134');
+
+    const Heart_Nebula = A.image('https://images.jakeastro.io/heart.jpg', {
+        name: 'Heart Nebula - IC1805',
+        imgFormat: 'jpeg',
+        wcs: {
+            NAXIS: 2,
+            CTYPE1: 'RA---TAN',
+            CTYPE2: 'DEC--TAN',
+            CRVAL1: 38.2523557453,
+            CRVAL2: 61.5358063099,
+            CRPIX1: 1376.38354492,
+            CRPIX2: convertWCStoAladinCRPIX2(586.040687561, 1599),
+            CD1_1: -0.000418150252223,
+            CD1_2: swapCDSign(1.7327467279E-05),
+            CD2_1: -1.70326091302E-05,
+            CD2_2: swapCDSign(-0.000418618251212),
+        },
+        successCallback: (ra, dec, fov, image) => {
+            markers.addSources([
+                A.marker(ra, dec, { popupTitle: 'Heart Nebula - IC1805' })
+            ]);
+            image.setOpacity(1);
+        }
+    });
+    aladin.setOverlayImageLayer(Heart_Nebula, 'Heart Nebula - IC1805');
+
+    const Andromeda_Galaxy = A.image('https://images.jakeastro.io/andromeda.jpg', {
+        name: 'Andromeda Galaxy',
+        imgFormat: 'jpeg',
+        wcs: {
+            NAXIS: 2,
+            CTYPE1: 'RA---TAN',
+            CTYPE2: 'DEC--TAN',
+            CRVAL1: 10.3574602124,
+            CRVAL2: 40.4451356611,
+            CRPIX1: 441.694780986,
+            CRPIX2: convertWCStoAladinCRPIX2(743.615620931, 1737),
+            CD1_1: 0.000444378156149,
+            CD1_2: swapCDSign(-0.000963254444531),
+            CD2_1: 0.000962802856061,
+            CD2_2: swapCDSign(0.000444072933037),
+        },
+        successCallback: (ra, dec, fov, image) => {
+            markers.addSources([
+                A.marker(ra, dec, { popupTitle: 'Andromeda Galaxy' })
+            ]);
+            image.setOpacity(1);
+        }
+    });
+    aladin.setOverlayImageLayer(Andromeda_Galaxy, 'Andromeda Galaxy');
 });
 
 
