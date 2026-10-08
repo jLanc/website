@@ -46,12 +46,7 @@ function openModal(image) {
     modal.title = image.title;
     modal.description = image.description;
     modalImg = document.getElementById('modal-img');
-    modalImg.src = image.href; // full res url 
-
-    console.log(modal.title)
-    console.log(modal.description)
-    console.log(modalImg)
-
+    modalImg.src = fullResUrl(image.src); // full res url 
 
     // set title, description
     // set base image src
