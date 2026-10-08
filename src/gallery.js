@@ -48,6 +48,11 @@ function openModal(image) {
     modalImg = document.getElementById('modal-img');
     modalImg.src = fullResUrl(image.src); // full res url 
 
+    // if user clicks modal-close, button, close modal
+    modal.addEventListener('click', (e) => {
+        if (e.target === "modal-close") modal.close();
+    });
+
     // set title, description
     // set base image src
     // if (image.overlay) → show the toggle row, otherwise hide it
@@ -90,6 +95,13 @@ window.addEventListener('DOMContentLoaded', () => {
         gallery.appendChild(createGalleryItem(image));
     });
     resizeGalleryItems();
+});
+
+// Close button for dialog box
+const closeButton = document.getElementById("modal-close");
+const fullSizeImageModal = document.getElementById("image-modal");
+closeButton.addEventListener("click", () => {
+  fullSizeImageModal.close();
 });
 
 window.addEventListener('resize', resizeGalleryItems);
