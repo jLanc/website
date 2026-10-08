@@ -31,7 +31,33 @@ function createGalleryItem(image) {
     caption.className = 'gallery-caption';
     caption.textContent = image.title;
     item.appendChild(caption);
+
+    item.addEventListener('click', (e) => {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+        e.preventDefault();
+        openModal(image);
+    });
+
     return item;
+}
+
+function openModal(image) {
+    modal = document.getElementById('image-modal')
+    modal.title = image.title;
+    modal.description = image.description;
+    modalImg = document.getElementById('modal-img');
+    modalImg.src = image.href; // full res url 
+
+    console.log(modal.title)
+    console.log(modal.description)
+    console.log(modalImg)
+
+
+    // set title, description
+    // set base image src
+    // if (image.overlay) → show the toggle row, otherwise hide it
+    // reset the toggle to unchecked so the next image doesn't inherit state
+    modal.showModal();
 }
 
 function revealWhenReady(img) {
