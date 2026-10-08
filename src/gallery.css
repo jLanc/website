@@ -1,7 +1,9 @@
 body {
     margin: 0;
-    overflow: hidden;
+    overflow: auto;
+    background-color: rgb(10, 10, 10);
 }
+
 canvas {
     position: fixed;
     top: 0;
@@ -10,12 +12,14 @@ canvas {
     height: 100%;
     z-index: -1;
 }
+
 .gallery {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     padding: 20px;
 }
+
 .gallery-item {
     margin: 10px;
     overflow: hidden;
@@ -31,11 +35,13 @@ canvas {
     text-decoration: none;
     color: inherit;
 }
+
 .gallery-item:hover {
     transform: scale(1.05);
     box-shadow: 0 0 20px rgba(215, 215, 215, 0.8);
     /* Brighter glow on hover */
 }
+
 .gallery-item img {
     display: block;
     width: 100%;
@@ -45,6 +51,7 @@ canvas {
     opacity: 0;
     transition: opacity 0.6s ease;
 }
+
 .gallery-caption {
     padding: 8px 10px;
     font-size: 0.8rem;
@@ -54,13 +61,18 @@ canvas {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
 .gallery-item img.loaded {
     opacity: 1;
 }
-body {
-    margin: 0;
-    overflow: auto;
-    /* Prevent scrollbars for the canvas */
-    background-color: rgb(10, 10, 10);
-    /* Set a fallback background color */
+
+.modal-figure>img {
+    display:block;
+    margin: auto;
+    width: 80%;
+    height: auto;
+}
+
+#modal-img-title {
+    text-align: center
 }

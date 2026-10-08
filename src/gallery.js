@@ -86,6 +86,7 @@ function resizeGalleryItems() {
     });
 }
 
+// Listener to display gallery when page bones finish loading
 window.addEventListener('DOMContentLoaded', () => {
     const gallery = document.getElementById('gallery');
 
@@ -97,7 +98,7 @@ window.addEventListener('DOMContentLoaded', () => {
     resizeGalleryItems();
 });
 
-// Close button for dialog box
+// Close button for full res image modal
 const closeButton = document.getElementById("modal-close");
 const fullSizeImageModal = document.getElementById("image-modal");
 closeButton.addEventListener("click", () => {
