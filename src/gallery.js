@@ -49,8 +49,8 @@ function openModal(image) {
     modalImg.src = fullResUrl(image.src); // full res url 
 
     // Close button for full res image modal
-    const closeButton = document.getElementById("modal-close");
-    const fullSizeImageModal = document.getElementById("gallery-image-modal");
+    closeButton = document.getElementById("modal-close");
+    fullSizeImageModal = document.getElementById("gallery-image-modal");
     closeButton.addEventListener("click", () => {
         fullSizeImageModal.close();
     });

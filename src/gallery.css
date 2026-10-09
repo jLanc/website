@@ -67,18 +67,40 @@ canvas {
 }
 
 #gallery-image-modal {
-    width: 90%;
-    height: 90%;
+    width: 75%;
+    height: 93git s%;
     box-sizing: border-box;
+    box-shadow: 0 0 20px rgba(215, 215, 215, 0.8);
+    background-color: #353434;
+    border: 0;
+    border-radius: 12px;
 }
 
 .modal-image>img {
-    display:block;
+    display: block;
     margin: auto;
-    width: 80%;
-    height: auto;
+    width: 95%;
+    object-fit: contain;
 }
 
 #modal-img-title {
-    text-align: center
+    text-align: center;
+    color: white;
+}
+
+#modal-img-description {
+    color: white;
+}
+
+#modal-close {
+    position: absolute;
+    right: 0;
+    margin-right: 1em;
+    font-size: 20px;
+    background-color: rgb(110, 110, 110);
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    width: 30px;
+    aspect-ratio: 1 / 1;
 }
