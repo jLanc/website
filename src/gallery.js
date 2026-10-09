@@ -42,21 +42,20 @@ function createGalleryItem(image) {
 }
 
 function openModal(image) {
-    modal = document.getElementById('image-modal')
+    modal = document.getElementById('gallery-image-modal')
     modal.title = image.title;
     modal.description = image.description;
     modalImg = document.getElementById('modal-img');
     modalImg.src = fullResUrl(image.src); // full res url 
 
-    // if user clicks modal-close, button, close modal
-    modal.addEventListener('click', (e) => {
-        if (e.target === "modal-close") modal.close();
+    // Close button for full res image modal
+    const closeButton = document.getElementById("modal-close");
+    const fullSizeImageModal = document.getElementById("gallery-image-modal");
+    closeButton.addEventListener("click", () => {
+        fullSizeImageModal.close();
     });
 
-    // set title, description
-    // set base image src
     // if (image.overlay) → show the toggle row, otherwise hide it
-    // reset the toggle to unchecked so the next image doesn't inherit state
     modal.showModal();
 }
 
@@ -96,13 +95,6 @@ window.addEventListener('DOMContentLoaded', () => {
         gallery.appendChild(createGalleryItem(image));
     });
     resizeGalleryItems();
-});
-
-// Close button for full res image modal
-const closeButton = document.getElementById("modal-close");
-const fullSizeImageModal = document.getElementById("image-modal");
-closeButton.addEventListener("click", () => {
-  fullSizeImageModal.close();
 });
 
 window.addEventListener('resize', resizeGalleryItems);
