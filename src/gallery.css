@@ -76,6 +76,7 @@ canvas {
     border-radius: 12px;
 }
 
+/* Hides focus outline when dialog appears */
 #gallery-image-modal:focus-visible {
     outline: none;
 }
@@ -105,8 +106,11 @@ canvas {
     color: white;
     border: 0;
     border-radius: 5px;
-    border-color: rgb(110, 110, 110);
-    ;
+    border-color: rgb(64, 64, 64);
     width: 30px;
     aspect-ratio: 1 / 1;
+}
+
+#modal-close:hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
