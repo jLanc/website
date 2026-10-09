@@ -31,7 +31,36 @@ function createGalleryItem(image) {
     caption.className = 'gallery-caption';
     caption.textContent = image.title;
     item.appendChild(caption);
+
+    item.addEventListener('click', (e) => {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+        e.preventDefault();
+        openModal(image);
+    });
+
     return item;
+}
+
+function openModal(image) {
+    imgTitle = document.getElementById('modal-img-title');
+    imgTitle.textContent = image.title;
+
+    imgDesc = document.getElementById('modal-img-description');
+    imgDesc.textContent = image.description;
+
+    modalImg = document.getElementById('modal-img');
+    modalImg.src = fullResUrl(image.src); // generate full res url 
+
+    // Close button for full res image modal
+    closeButton = document.getElementById("modal-close");
+    fullSizeImageModal = document.getElementById("gallery-image-modal");
+    closeButton.addEventListener("click", () => {
+        fullSizeImageModal.close();
+    });
+
+    // if (image.overlay) → show the toggle row, otherwise hide it
+    modal = document.getElementById('gallery-image-modal')
+    modal.showModal();
 }
 
 function revealWhenReady(img) {
@@ -60,6 +89,7 @@ function resizeGalleryItems() {
     });
 }
 
+// Listener to display gallery when page bones finish loading
 window.addEventListener('DOMContentLoaded', () => {
     const gallery = document.getElementById('gallery');
 

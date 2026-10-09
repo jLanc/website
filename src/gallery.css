@@ -1,7 +1,9 @@
 body {
     margin: 0;
-    overflow: hidden;
+    overflow: auto;
+    background-color: rgb(10, 10, 10);
 }
+
 canvas {
     position: fixed;
     top: 0;
@@ -10,12 +12,14 @@ canvas {
     height: 100%;
     z-index: -1;
 }
+
 .gallery {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     padding: 20px;
 }
+
 .gallery-item {
     margin: 10px;
     overflow: hidden;
@@ -31,11 +35,13 @@ canvas {
     text-decoration: none;
     color: inherit;
 }
+
 .gallery-item:hover {
     transform: scale(1.05);
     box-shadow: 0 0 20px rgba(215, 215, 215, 0.8);
     /* Brighter glow on hover */
 }
+
 .gallery-item img {
     display: block;
     width: 100%;
@@ -45,6 +51,7 @@ canvas {
     opacity: 0;
     transition: opacity 0.6s ease;
 }
+
 .gallery-caption {
     padding: 8px 10px;
     font-size: 0.8rem;
@@ -54,13 +61,68 @@ canvas {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
 .gallery-item img.loaded {
     opacity: 1;
 }
-body {
-    margin: 0;
-    overflow: auto;
-    /* Prevent scrollbars for the canvas */
-    background-color: rgb(10, 10, 10);
-    /* Set a fallback background color */
+
+#gallery-image-modal {
+    width: 75%;
+    /* dvh = dynamic viewport height. Better for mobile use so modal doesn't overflow under address bar */
+    height: 93dvh;
+    box-sizing: border-box;
+    box-shadow: 0 0 20px rgba(215, 215, 215, 0.8);
+    background-color: #353434;
+    border: 0;
+    border-radius: 12px;
+}
+
+/* Hides focus outline when dialog appears */
+#gallery-image-modal:focus-visible {
+    outline: none;
+}
+
+.modal-image {
+    width: 95%;
+    margin-inline: auto;
+}
+
+.modal-image>img {
+    display: block;
+    margin-inline: auto;
+    /* Calculate max image height so it fits
+       nicely in modal box. vh=viewport height, rem=root em */
+    max-width: 100%;
+    max-height: calc(93vh - 9rem);
+    object-fit: contain;
+}
+
+#modal-img-title {
+    text-align: center;
+    color: white;
+}
+
+#modal-img-description {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+#modal-close {
+    position: absolute;
+    right: 0;
+    margin-right: 1em;
+    font-size: 20px;
+    background-color: rgb(110, 110, 110);
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    border-color: rgb(64, 64, 64);
+    width: 30px;
+    aspect-ratio: 1 / 1;
+}
+
+/* Create visual interactivity when close button is hovered over */
+#modal-close:hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 20px rgba(215, 215, 215, 0.8);
 }

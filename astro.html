@@ -30,6 +30,17 @@
         </div>
     </main>
 
+    <!-- modal for displaying image details when selected -->
+    <dialog id="gallery-image-modal" autofocus>
+        <button id="modal-close">&times;</button>
+        <div class="modal-image">
+            <h3 id="modal-img-title">Default Text</h3>
+            <img id="modal-img">
+            <p id="modal-img-description">Default Text</p>
+        </div>
+    </dialog>
+
+    <!-- image details and scripts -->
     <script type="module" src="src/fluid-background.js?auto"></script>
     <script src="src/gallery.js"></script>
     <script>
@@ -37,7 +48,9 @@
             {
                 id: 1,
                 title: "M31 - Andromeda",
-                src: "assets/astro-image-thumbnails/andromeda.jpg"
+                src: "assets/astro-image-thumbnails/andromeda.jpg",
+                description: "Our nearest neighbor, the Andromeda Galaxy photographed with an Askar FRA400 telescope from a Bortle 4 site in Northern England. Total image integration time is 1hr 55min using 23 5 minute images.",
+                overlay: "andromeda-annotated.jpg"
             },
             {
                 id: 2,
@@ -129,7 +142,7 @@
                 title: "NGC 1365 - Wide Field Galaxy Friends",
                 src: "assets/astro-image-thumbnails/NGC1365.jpg"
             },
-                        {
+            {
                 id: 20,
                 title: "NGC 253 - The Sculptor Galaxy",
                 src: "assets/astro-image-thumbnails/Sculptor_Galaxy.jpg"
