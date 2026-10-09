@@ -68,7 +68,8 @@ canvas {
 
 #gallery-image-modal {
     width: 75%;
-    height: 93%;
+    /* dvh = dynamic viewport height. Better for mobile use so modal doesn't overflow under address bar */
+    height: 93dvh;
     box-sizing: border-box;
     box-shadow: 0 0 20px rgba(215, 215, 215, 0.8);
     background-color: #353434;
@@ -81,10 +82,18 @@ canvas {
     outline: none;
 }
 
+.modal-image {
+    width: 95%;
+    margin-inline: auto;
+}
+
 .modal-image>img {
     display: block;
-    margin: auto;
-    width: 95%;
+    margin-inline: auto;
+    /* Calculate max image height so it fits
+       nicely in modal box. vh=viewport height, rem=root em */
+    max-width: 100%;
+    max-height: calc(93vh - 9rem);
     object-fit: contain;
 }
 
@@ -95,6 +104,7 @@ canvas {
 
 #modal-img-description {
     color: white;
+    font-family: Arial, Helvetica, sans-serif
 }
 
 #modal-close {
@@ -111,6 +121,7 @@ canvas {
     aspect-ratio: 1 / 1;
 }
 
+/* Create visual interactivity when close button is hovered over */
 #modal-close:hover {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 0 20px rgba(215, 215, 215, 0.8);

@@ -42,11 +42,14 @@ function createGalleryItem(image) {
 }
 
 function openModal(image) {
-    modal = document.getElementById('gallery-image-modal')
-    modal.title = image.title;
-    modal.description = image.description;
+    imgTitle = document.getElementById('modal-img-title');
+    imgTitle.textContent = image.title;
+
+    imgDesc = document.getElementById('modal-img-description');
+    imgDesc.textContent = image.description;
+
     modalImg = document.getElementById('modal-img');
-    modalImg.src = fullResUrl(image.src); // full res url 
+    modalImg.src = fullResUrl(image.src); // generate full res url 
 
     // Close button for full res image modal
     closeButton = document.getElementById("modal-close");
@@ -56,6 +59,7 @@ function openModal(image) {
     });
 
     // if (image.overlay) → show the toggle row, otherwise hide it
+    modal = document.getElementById('gallery-image-modal')
     modal.showModal();
 }
 
