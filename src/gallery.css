@@ -113,4 +113,5 @@ canvas {
 
 #modal-close:hover {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 20px rgba(215, 215, 215, 0.8);
 }
