@@ -68,12 +68,16 @@ canvas {
 
 #gallery-image-modal {
     width: 75%;
-    height: 93git s%;
+    height: 93%;
     box-sizing: border-box;
     box-shadow: 0 0 20px rgba(215, 215, 215, 0.8);
     background-color: #353434;
     border: 0;
     border-radius: 12px;
+}
+
+#gallery-image-modal:focus-visible {
+    outline: none;
 }
 
 .modal-image>img {
@@ -101,6 +105,8 @@ canvas {
     color: white;
     border: 0;
     border-radius: 5px;
+    border-color: rgb(110, 110, 110);
+    ;
     width: 30px;
     aspect-ratio: 1 / 1;
 }
