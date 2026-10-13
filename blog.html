@@ -7,6 +7,17 @@
     <title>Astro Images</title>
     <link rel="stylesheet" href="src/common.css">
     <link rel="stylesheet" href="src/gallery.css">
+
+    <style>
+        #blogFrame {
+            height: calc(100dvh - 80px); /* 60px comes from common.css where we define navigation bar (header) as 60px height */
+            margin-top: 80px; /* spacing at the top to not draw blog under header */
+            display: block;
+            border: none;
+            width: 100%;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -24,5 +35,8 @@
             </ul>
         </nav>
     </header>
+
+   <iframe id=blogFrame src="blog/site/index.html"></iframe>
+
 </body>
 </html>
