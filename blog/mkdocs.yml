@@ -1,0 +1,7 @@
+site_name: My Docs
+
+theme:
+  name: moonstone
+
+extra_css:
+  - stylesheets/extra.css
