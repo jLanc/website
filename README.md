@@ -26,9 +26,11 @@ The website was built both as a learning task for frontend web development, and 
 | About Page | Simple page with overview of myself ✅ |
 | Interactive Background | 2d Fluid simulation WebGL background ✅ |
 | Star Map | Pannable night sky map with astro image overlay in correct positions ✅ |
-| Gallery Page Modal| When an image is selected, a modal should pop up displaying the image and a description. Expansion to have on hover plate solved coordinates on second iteration 👨‍💻|
+| Gallery Page Modal| When an image is selected, a modal should pop up displaying the image and a description. Expansion to have on hover plate solved coordinates on second iteration ✅|
+| Blog Page | Markdown docs based blog page ✅|
+| Blog Page | Add variable star story from ASSA ✅|
+| Blog Page Cleanup | Remove unused formatting and text from markdown template 👨‍💻|
 | Technical Debit Cleanup 1| Remove duplicate css entries 🗓️|
-| Blog Page| Similar layer to gallery but for blog posts on scientific endeavors. Posts should use a modal to overlay post contents when selected 🗓️|
 | Technical Debit Cleanup 2| Use JSON for Star Map entries rather than adding code directly into html file. Create JS to parse json & construct what we need 🗓️|
 | Star Map Styling| Create CSS for star map buttons so they're less harsh to the eye 🗓️|
 | Star Map FOV simulator| Telescope FOV indicator with a selectable telescope setup (sct or 13028HNT) 🗓️|
