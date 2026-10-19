@@ -49,3 +49,12 @@ The website was built both as a learning task for frontend web development, and 
 6. Create star map entry in html file (for now - see feature list)
 7. Test star map entry locally with full sized image in R2 bucket
 8. If all good, commit & push to live
+
+### Workflow For Uploading Blog
+---
+1. Make change to .md file
+2. Rebuild blog pages ```blog/bin/mkdocs build -f blog/mkdocs.yml```
+3. Test locally
+4. Add and commit new md page or edits. 
+5. Add and commit build pages under ```blog/site```
+6. Push changes, wait for public version to update (a few seconds) and test
