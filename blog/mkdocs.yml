@@ -4,6 +4,8 @@ theme:
   name: moonstone
   custom_dir: overrides
 
+nav:
+
 extra_css:
   - stylesheets/extra.css
 
