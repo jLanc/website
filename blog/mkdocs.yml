@@ -2,6 +2,7 @@ site_name: My Docs
 
 theme:
   name: moonstone
+  custom_dir: overrides
 
 extra_css:
   - stylesheets/extra.css
