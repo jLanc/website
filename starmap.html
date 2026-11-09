@@ -44,10 +44,37 @@
         </nav>
     </header>
 
+    <!-- setup contingency if aladin is unavailable-->
+    <div id="content-unavailable-textbox"
+        style="display: flex; justify-content: center; align-items: center; min-height: calc(100dvh - 80px);"></div>
+    <script>
+        function handleLoadError() {
+            // Hide aladin viewport before displaying error message
+            document.getElementById("aladin-lite-div").style.display = "none";
+
+            const container = document.getElementById('content-unavailable-textbox');
+            container.innerHTML = `
+                <div style="color: #d9534f; padding: 10px; border: 1px solid #d9534f; background-color: #fdf7f7;">
+                    <strong>Content Unavailable:</strong> Failed to retrieve aladin dependency scripts. Please refresh or try again later.
+                </div>
+            `;
+        }
+    </script>
 
     <!-- Star Map -->
     <div id="aladin-lite-div" style="height: 100vh"></div>
-    <script type="text/javascript" src="https://aladin.cds.unistra.fr/AladinLite/api/v3/latest/aladin.js" charset="utf-8"></script>
+
+    <script type="text/javascript"
+        charset="utf-8" onerror="handleLoadError()">
+            setTimeout(() => {
+                const script = document.createElement('script');
+                script.src = 'https://aladin.cds.unistra.fr/AladinLite/api/v3/latest/aladin.js';
+                script.async = false; // Optional: prevents blocking page parsing
+
+                document.head.appendChild(script);
+            }, 3000); // = 3 seconds delay
+        </script>
+
     <script type="text/javascript" src="src/starmap.js"></script>
 </body>
 
