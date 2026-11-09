@@ -46,7 +46,8 @@
 
     <!-- setup contingency if aladin is unavailable-->
     <div id="content-unavailable-textbox"
-        style="display: none; justify-content: center; align-items: center; min-height: calc(100dvh - 80px);"></div>
+        style="display: none; justify-content: center; align-items: center; min-height: calc(100dvh - 80px); margin-top: 80px;">
+    </div>
 
     <!-- Star Map -->
     <div id="aladin-lite-div" style="height: 100vh"></div>
@@ -55,28 +56,41 @@
         function loadScript(src, timeoutMs, fallback) {
             const script = document.createElement('script');
 
+            // Set timer
             const timer = setTimeout(() => {
                 script.remove(); // Doesn't stop download of aladin.js file happening in the background. 
-                fallback(new Error('Timeout'));
+                fallback(new Error('Timeout while loading aladin sky viewer'));
             }, timeoutMs);
 
             // Handle sucessful load or error case for importing aladin.js
-            script.onload = () => { clearTimeout(timer); const starmapModule = import('src/starmap.js'); //starmapModule.myFunction();
+            script.onload = async () => {
+                // aladin.js loaded, attempt starmap import
+                try {
+                    clearTimeout(timer);
+                    await import('./src/starmap.js');
+                } catch (e) {
+                    fallback(new Error('Could not load starmap.js', { cause: e })); // if starmap.js fails to load, print the error to the error message
+                }
             };
-            script.onerror = () => { clearTimeout(timer); script.remove(); fallback(new Error('Network error')); };
+            script.onerror = () => {
+                clearTimeout(timer);
+                script.remove();
+                fallback(new Error('Network error'));
+            };
 
             script.src = src;
             document.head.appendChild(script);
         }
 
         // 5 second timeout when attempting to load aladin.js
+        // err currently being lost
         loadScript('https://aladin.cds.unistra.fr/AladinLite/api/v3/latest/aladin.js', 5000, (err) => {
             document.getElementById("aladin-lite-div").style.display = "none";
 
             const container = document.getElementById('content-unavailable-textbox');
             container.innerHTML = `
                 <div style="color: #d9534f; padding: 10px; border: 1px solid #d9534f; background-color: #fdf7f7;">
-                    <strong>Content Unavailable:</strong> Failed to retrieve aladin dependency scripts. Please refresh or try again later.
+                    <strong>Content Unavailable:</strong> ${err.message}.
                 </div>
             `;
             container.style.display = "flex" // Show error div with error message
